@@ -62,6 +62,12 @@ export function initTerminal() {
     const [mainCmd, ...args] = cmd.toLowerCase().split(' ');
 
     switch (mainCmd) {
+      case 'hi':
+      case 'hello':
+      case 'hey':
+        printLine(`Hello! Welcome to <span class="terminal-out-blue">NaveenOS v1.0</span>. Type <span class="terminal-out-green">'help'</span> to see all available commands or try <span class="terminal-out-green">'skills'</span>, <span class="terminal-out-green">'projects'</span>, or <span class="terminal-out-green">'matrix'</span>!`);
+        break;
+
       case 'help':
         printLine(`
 Available commands:
@@ -80,6 +86,7 @@ Available commands:
         break;
 
       case 'whoami':
+      case 'about':
         printLine(`
 <span class="terminal-out-blue">NAVEEN S</span>
 Role: UI/UX Designer · AI/ML Enthusiast · Machine Learning Engineer
