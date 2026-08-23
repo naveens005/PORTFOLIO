@@ -785,3 +785,54 @@
     padding: var(--space-md);
   }
 }
+
+/* -------------------------------------------------------------------
+   7. CLEAN SINGLE-PAGE PRINT ISOLATION
+   ------------------------------------------------------------------- */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  #resume-modal,
+  #resume-modal * {
+    visibility: visible !important;
+  }
+
+  #resume-modal {
+    position: fixed !important;
+    inset: 0 !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    opacity: 1 !important;
+  }
+
+  .resume-dialog {
+    max-width: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+  }
+
+  .resume-header,
+  .modal-close-btn,
+  #download-resume-btn {
+    display: none !important;
+  }
+
+  .resume-paper {
+    padding: 20mm !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10.5pt !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+}
