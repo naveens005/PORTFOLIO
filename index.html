@@ -785,12 +785,39 @@
         <div class="terminal-title">NaveenOS v1.0 — zsh</div>
         <div style="width: 33px;"></div>
       </div>
+
+      <!-- Interactive Quick Command Chips -->
+      <div class="terminal-chips-bar">
+        <span class="terminal-chips-label">Quick Actions:</span>
+        <div class="terminal-chips-scroll">
+          <button class="terminal-chip" data-cmd="naveenfetch">⚡ naveenfetch</button>
+          <button class="terminal-chip" data-cmd="ai predict dense stadium entrance">🧠 ai predict</button>
+          <button class="terminal-chip" data-cmd="patent sim">🖐️ patent sim</button>
+          <button class="terminal-chip" data-cmd="quiz">🎮 quiz</button>
+          <button class="terminal-chip" data-cmd="speedtest">🚀 speedtest</button>
+          <button class="terminal-chip" data-cmd="sudo hire naveen">💼 hire naveen</button>
+          <button class="terminal-chip" data-cmd="weather chennai">☀️ weather</button>
+          <button class="terminal-chip" data-cmd="cowsay Minimal on the surface. Intelligent underneath.">🐮 cowsay</button>
+          <button class="terminal-chip" data-cmd="matrix">🟢 matrix</button>
+          <button class="terminal-chip" data-cmd="theme cyberpunk">🎨 theme</button>
+          <button class="terminal-chip" data-cmd="help">❓ help</button>
+        </div>
+      </div>
+
       <div class="terminal-body" id="terminal-body">
         <div class="terminal-output" id="terminal-output"></div>
         <div class="terminal-prompt-line">
           <span class="terminal-prompt-sym">naveen@portfolio:~$</span>
-          <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false">
+          <div class="terminal-input-container">
+            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" placeholder="Type a command or click a chip above...">
+            <span id="terminal-ghost-hint" class="terminal-ghost-hint" aria-hidden="true"></span>
+          </div>
         </div>
+      </div>
+
+      <!-- Terminal Helper Hint Footer -->
+      <div class="terminal-footer-bar">
+        <span>💡 Click any chip above · Press <kbd>Tab</kbd> to autocomplete · <kbd>↑</kbd><kbd>↓</kbd> for history · Type <kbd>help</kbd> for 20+ commands</span>
       </div>
     </div>
   </div>

@@ -14,18 +14,28 @@ export function initTerminal() {
 
   if (!modal || !output || !input) return;
 
-  const history = [];
-  let historyIndex = -1;
-  let quizState = { active: false, currentQ: 0, score: 0 };
+  const availableCommands = [
+    'help', 'naveenfetch', 'ai predict', 'patent sim', 'quiz', 'speedtest',
+    'sudo hire naveen', 'weather chennai', 'cowsay', 'calc', 'matrix',
+    'clock', 'quote', 'theme matrix', 'theme cyberpunk', 'theme amber', 'theme mono',
+    'whoami', 'skills', 'projects', 'patent', 'experience', 'education', 'contact',
+    'curl resume', 'cat resume', 'ls', 'pwd', 'date', 'uptime', 'clear', 'exit'
+  ];
 
   const welcomeBanner = `
-  _   _                            ___  ____  
- | \\ | | __ ___   _____  ___ _ __  / _ \\/ ___| 
- |  \\| |/ _\` \\ \\ / / _ \\/ _ \\ '_ \\| | | \\___ \\ 
- | |\\  | (_| |\\ V /  __/  __/ | | | |_| |___) |
- |_| \\_|\\__,_| \\_/ \\___|\\___|_| |_|\\___/|____/ 
- NaveenOS Kernel v1.0.4-release (x86_64-apple-darwin)
- Type <span class="terminal-out-green">'help'</span> to see all commands or try <span class="terminal-out-green">'naveenfetch'</span>, <span class="terminal-out-green">'ai predict'</span>, or <span class="terminal-out-green">'speedtest'</span>!
+<span class="terminal-out-blue">  _   _                            ___  ____  </span>
+<span class="terminal-out-blue"> | \\ | | __ ___   _____  ___ _ __  / _ \\/ ___| </span>
+<span class="terminal-out-blue"> |  \\| |/ _\` \\ \\ / / _ \\/ _ \\ '_ \\| | | \\___ \\ </span>
+<span class="terminal-out-blue"> | |\\  | (_| |\\ V /  __/  __/ | | | |_| |___) |</span>
+<span class="terminal-out-blue"> |_| \\_|\\__,_| \\_/ \\___|\\___|_| |_|\\___/|____/ </span>
+<span class="terminal-out-bold">NaveenOS Kernel v1.0.4-release</span> (Interactive AI & Product CLI)
+
+<span class="terminal-out-yellow">┌─────────────────────────────────────────────────────────────┐</span>
+<span class="terminal-out-yellow">│</span> 💡 <span class="terminal-out-bold">INTERACTIVE HINT:</span>                                         <span class="terminal-out-yellow">│</span>
+<span class="terminal-out-yellow">│</span> • <span class="terminal-out-green">Click any Quick Action pill above</span> to run instantly!      <span class="terminal-out-yellow">│</span>
+<span class="terminal-out-yellow">│</span> • Type <span class="terminal-out-green">'help'</span> for all 25+ commands                          <span class="terminal-out-yellow">│</span>
+<span class="terminal-out-yellow">│</span> • Try: <span class="terminal-out-cyan">'naveenfetch'</span>, <span class="terminal-out-cyan">'ai predict'</span>, <span class="terminal-out-cyan">'speedtest'</span>, or <span class="terminal-out-cyan">'quiz'</span>   <span class="terminal-out-yellow">│</span>
+<span class="terminal-out-yellow">└─────────────────────────────────────────────────────────────┘</span>
 `;
 
   function printLine(text, className = '') {
@@ -572,11 +582,37 @@ ${quizState.score === 3 ? '<span class="terminal-out-green">Outstanding! You hav
     }, 60);
   }
 
+  // Quick Command Chips Click Execution
+  const chips = modal.querySelectorAll('.terminal-chip');
+  chips.forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const cmd = chip.getAttribute('data-cmd');
+      if (cmd) {
+        input.value = cmd;
+        input.focus();
+        setTimeout(() => {
+          input.value = '';
+          handleCommand(cmd);
+        }, 150);
+      }
+    });
+  });
+
+  // Tab Autocomplete & Keyboard Handler
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       const val = input.value;
       input.value = '';
       handleCommand(val);
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      const val = input.value.trim().toLowerCase();
+      if (!val) return;
+      const match = availableCommands.find(c => c.startsWith(val));
+      if (match) {
+        input.value = match;
+      }
     } else if (e.key === 'ArrowUp') {
       if (history.length > 0 && historyIndex > 0) {
         historyIndex--;
