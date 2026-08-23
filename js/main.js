@@ -226,11 +226,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 12. In-Browser Resume Modal
+  // 12. In-Browser Resume Modal & Download
   const resumeModal = document.getElementById('resume-modal');
   const resumeClose = document.getElementById('resume-modal-close');
   const resumeBtns = document.querySelectorAll('.resume-trigger-btn');
-  const printResumeBtn = document.getElementById('print-resume-btn');
+  const downloadResumeBtn = document.getElementById('download-resume-btn') || document.getElementById('print-resume-btn');
 
   function openResumeModal() {
     if (resumeModal) resumeModal.classList.add('active');
@@ -252,9 +252,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (printResumeBtn) {
-    printResumeBtn.addEventListener('click', () => {
+  if (downloadResumeBtn) {
+    downloadResumeBtn.addEventListener('click', () => {
+      const origTitle = document.title;
+      document.title = 'NAVEEN_S_RESUME';
+      showToast('✓ Preparing Naveen S Resume download...');
       window.print();
+      setTimeout(() => {
+        document.title = origTitle;
+      }, 1000);
     });
   }
 
