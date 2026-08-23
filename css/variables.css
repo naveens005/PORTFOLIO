@@ -1,0 +1,131 @@
+/* ===================================================================
+   NAVEEN S — DESIGN SYSTEM & TOKENS
+   Minimal on the surface. Intelligent underneath.
+   =================================================================== */
+
+:root {
+  /* Color Palette — Dark Mode (Default Obsidian) */
+  --bg-primary: #070709;
+  --bg-secondary: #0e0e13;
+  --bg-tertiary: #15151c;
+  --bg-elevated: #1a1a23;
+  
+  --surface: rgba(255, 255, 255, 0.035);
+  --surface-hover: rgba(255, 255, 255, 0.07);
+  --surface-active: rgba(255, 255, 255, 0.11);
+  --surface-glass: rgba(12, 12, 16, 0.75);
+  --surface-glass-border: rgba(255, 255, 255, 0.1);
+  
+  --border: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --border-hover: rgba(255, 255, 255, 0.22);
+  --border-strong: rgba(255, 255, 255, 0.35);
+  
+  --text-primary: #f5f5f7;
+  --text-secondary: #9898a6;
+  --text-muted: #626270;
+  --text-dim: #434350;
+  
+  --accent: #ffffff;
+  --accent-inv: #070709;
+  --accent-glow: rgba(255, 255, 255, 0.16);
+  --accent-glow-strong: rgba(255, 255, 255, 0.35);
+  
+  --status-green: #10b981;
+  --status-green-glow: rgba(16, 185, 129, 0.35);
+  --status-blue: #3b82f6;
+  --status-amber: #f59e0b;
+  
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  --font-display: 'Syne', 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', Consolas, monospace;
+  
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+  --space-4xl: 7.5rem;
+  --space-5xl: 10rem;
+  
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+  
+  /* Shadows & Glass */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 48px -8px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.08);
+  --backdrop-blur: blur(18px);
+  --backdrop-blur-strong: blur(28px);
+  
+  /* Buttery Transitions & Timing Functions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 160ms;
+  --duration-normal: 300ms;
+  --duration-slow: 550ms;
+  --duration-long: 850ms;
+  
+  /* Layout Constraints */
+  --max-width: 1240px;
+  --max-width-narrow: 880px;
+  --max-width-wide: 1440px;
+  --nav-height: 72px;
+  
+  /* Canvas Overlay */
+  --grid-line-color: rgba(255, 255, 255, 0.025);
+  --noise-opacity: 0.035;
+}
+
+/* Light Theme (Editorial Clean Monochrome) */
+[data-theme="light"] {
+  --bg-primary: #f8f9fb;
+  --bg-secondary: #f0f1f5;
+  --bg-tertiary: #e4e6ec;
+  --bg-elevated: #ffffff;
+  
+  --surface: rgba(0, 0, 0, 0.03);
+  --surface-hover: rgba(0, 0, 0, 0.06);
+  --surface-active: rgba(0, 0, 0, 0.09);
+  --surface-glass: rgba(248, 249, 251, 0.82);
+  --surface-glass-border: rgba(0, 0, 0, 0.08);
+  
+  --border: rgba(0, 0, 0, 0.09);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --border-hover: rgba(0, 0, 0, 0.22);
+  --border-strong: rgba(0, 0, 0, 0.4);
+  
+  --text-primary: #0a0a0f;
+  --text-secondary: #585966;
+  --text-muted: #888998;
+  --text-dim: #b0b2c0;
+  
+  --accent: #0a0a0f;
+  --accent-inv: #ffffff;
+  --accent-glow: rgba(0, 0, 0, 0.08);
+  --accent-glow-strong: rgba(0, 0, 0, 0.2);
+  
+  --status-green: #059669;
+  --status-green-glow: rgba(5, 150, 105, 0.25);
+  --status-blue: #2563eb;
+  --status-amber: #d97706;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 48px -8px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 35px rgba(0, 0, 0, 0.04);
+  
+  --grid-line-color: rgba(0, 0, 0, 0.035);
+  --noise-opacity: 0.015;
+}

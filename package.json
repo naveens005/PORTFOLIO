@@ -1,0 +1,19 @@
+{
+  "name": "naveen-s-portfolio",
+  "version": "1.0.0",
+  "description": "NAVEEN S — Ultra-Premium Digital Portfolio & Personal Experience (AI/ML & UI/UX)",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve -l 3000 .",
+    "start": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "portfolio",
+    "naveen-s",
+    "ai-engineer",
+    "ui-ux-designer",
+    "machine-learning"
+  ],
+  "author": "Naveen S <naveens1077@gmail.com>",
+  "license": "MIT"
+}
