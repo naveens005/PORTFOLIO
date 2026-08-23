@@ -269,7 +269,41 @@
 .terminal-out-green { color: #10b981; }
 .terminal-out-blue { color: #60a5fa; }
 .terminal-out-yellow { color: #fbbf24; }
+.terminal-out-purple { color: #c084fc; }
+.terminal-out-cyan { color: #22d3ee; }
+.terminal-out-red { color: #f87171; }
 .terminal-out-muted { color: #6b7280; }
+.terminal-out-bold { font-weight: 700; color: #ffffff; }
+
+/* CRT Themes */
+.terminal-window.theme-matrix {
+  background: #041208;
+  border-color: #059669;
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.25);
+}
+.terminal-window.theme-matrix .terminal-body { color: #34d399; }
+.terminal-window.theme-matrix .terminal-prompt-sym { color: #10b981; }
+.terminal-window.theme-matrix .terminal-input { color: #6ee7b7; }
+
+.terminal-window.theme-amber {
+  background: #140d04;
+  border-color: #d97706;
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.25);
+}
+.terminal-window.theme-amber .terminal-body { color: #fbbf24; }
+.terminal-window.theme-amber .terminal-prompt-sym { color: #f59e0b; }
+.terminal-window.theme-amber .terminal-input { color: #fef3c7; }
+.terminal-window.theme-amber .terminal-out-blue,
+.terminal-window.theme-amber .terminal-out-green { color: #fcd34d; }
+
+.terminal-window.theme-cyberpunk {
+  background: #0d0618;
+  border-color: #a855f7;
+  box-shadow: 0 0 45px rgba(168, 85, 247, 0.3);
+}
+.terminal-window.theme-cyberpunk .terminal-body { color: #e9d5ff; }
+.terminal-window.theme-cyberpunk .terminal-prompt-sym { color: #22d3ee; }
+.terminal-window.theme-cyberpunk .terminal-input { color: #f472b6; }
 
 /* -------------------------------------------------------------------
    4. NAVEENAI FLOATING ASSISTANT WIDGET
