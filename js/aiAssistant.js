@@ -43,8 +43,8 @@ export function initAIAssistant(callbacks = {}) {
       answer: "Naveen's achievements include being selected for the Bharatiya Antariksh Hackathon 2026 (ISRO × Hack2Skill), competing in HackFinity 2025 (24-Hour National Hackathon), and filing a co-inventor patent in assistive AI technology."
     },
     {
-      keywords: ['contact', 'hire', 'available', 'email', 'opportunity', 'job', 'reach'],
-      answer: "Naveen is actively open to impactful AI/ML Engineering, Product Design, and Multidisciplinary AI roles. You can reach him directly at naveens1077@gmail.com or via LinkedIn!"
+      keywords: ['contact', 'hire', 'available', 'email', 'opportunity', 'job', 'reach', 'github'],
+      answer: "Naveen is actively open to impactful AI/ML Engineering, Product Design, and Multidisciplinary AI roles. You can reach him directly at naveens1077@gmail.com, inspect his code on GitHub (https://github.com/naveens005), or connect on LinkedIn!"
     },
     {
       keywords: ['resume', 'cv', 'download'],

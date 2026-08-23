@@ -36,7 +36,7 @@ export function initCommandPalette(callbacks = {}) {
     { id: 'act-copy-email', title: 'Copy Email (naveens1077@gmail.com)', group: 'Actions', icon: 'copy', action: () => callbacks.copyEmail && callbacks.copyEmail() },
 
     // Social
-    { id: 'soc-github', title: 'GitHub Profile', group: 'Social', icon: 'github', action: () => window.open('https://github.com', '_blank') },
+    { id: 'soc-github', title: 'GitHub Profile (@naveens005)', group: 'Social', icon: 'github', action: () => window.open('https://github.com/naveens005', '_blank') },
     { id: 'soc-linkedin', title: 'LinkedIn Profile', group: 'Social', icon: 'linkedin', action: () => window.open('https://linkedin.com', '_blank') }
   ];
 

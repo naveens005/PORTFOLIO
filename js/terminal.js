@@ -137,7 +137,7 @@ Status: Undergraduate (2023 — 2027) | CGPA: 8.0 / 10.0
       case 'contact':
         printLine(`
 Email: <span class="terminal-out-green">naveens1077@gmail.com</span>
-GitHub: https://github.com
+GitHub: https://github.com/naveens005
 LinkedIn: https://linkedin.com
 `);
         break;
