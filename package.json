@@ -15,5 +15,8 @@
     "machine-learning"
   ],
   "author": "Naveen S <naveens1077@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jspdf": "^4.2.1"
+  }
 }

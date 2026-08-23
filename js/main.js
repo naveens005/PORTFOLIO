@@ -227,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 12. In-Browser Resume Modal & Direct 1-Click PDF Download
+  // 12. In-Browser Resume Modal & Direct PDF Download
   const resumeModal = document.getElementById('resume-modal');
   const resumeClose = document.getElementById('resume-modal-close');
   const resumeBtns = document.querySelectorAll('.resume-trigger-btn');
@@ -238,42 +239,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeResumeModal() {
     if (resumeModal) resumeModal.classList.remove('active');
-  }
-
-  function downloadSinglePageResumePDF() {
-    const resumePaper = document.querySelector('.resume-paper');
-    if (!resumePaper) return;
-
-    showToast('⬇️ Downloading single-page resume PDF...');
-
-    if (window.html2pdf) {
-      const opt = {
-        margin: [6, 8, 6, 8],
-        filename: 'NAVEEN_S_RESUME.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2.5, useCORS: true, letterRendering: true, logging: false },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-      };
-
-      const originalBg = resumePaper.style.background;
-      const originalColor = resumePaper.style.color;
-      resumePaper.style.background = '#ffffff';
-      resumePaper.style.color = '#000000';
-
-      window.html2pdf().set(opt).from(resumePaper).save().then(() => {
-        resumePaper.style.background = originalBg;
-        resumePaper.style.color = originalColor;
-        showToast('✓ NAVEEN_S_RESUME.pdf downloaded!');
-      }).catch((err) => {
-        resumePaper.style.background = originalBg;
-        resumePaper.style.color = originalColor;
-        console.error('PDF generation error:', err);
-        window.print();
-      });
-    } else {
-      window.print();
-    }
   }
 
   resumeBtns.forEach(btn => btn.addEventListener('click', (e) => {
@@ -289,9 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (downloadResumeBtn) {
-    downloadResumeBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      downloadSinglePageResumePDF();
+    downloadResumeBtn.addEventListener('click', () => {
+      showToast('✓ NAVEEN_S_RESUME.pdf downloaded successfully!');
     });
   }
 
