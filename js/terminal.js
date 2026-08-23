@@ -1,6 +1,5 @@
 /**
- * NaveenOS v1.0 — Ultra-Interactive Developer CLI Terminal
- * Feature-Packed with ML Simulators, Unix Utilities, Easter Eggs & Games
+ * NaveenOS v1.0 — Ultra-Clean & Interactive Developer CLI Terminal
  */
 
 export function initTerminal() {
@@ -14,29 +13,16 @@ export function initTerminal() {
 
   if (!modal || !output || !input) return;
 
+  const history = [];
+  let historyIndex = -1;
+  let quizState = { active: false, currentQ: 0, score: 0 };
+
   const availableCommands = [
-    'help', 'naveenfetch', 'ai predict', 'patent sim', 'quiz', 'speedtest',
-    'sudo hire naveen', 'weather chennai', 'cowsay', 'calc', 'matrix',
-    'clock', 'quote', 'theme matrix', 'theme cyberpunk', 'theme amber', 'theme mono',
-    'whoami', 'skills', 'projects', 'patent', 'experience', 'education', 'contact',
-    'curl resume', 'cat resume', 'ls', 'pwd', 'date', 'uptime', 'clear', 'exit'
+    'help', 'whoami', 'skills', 'projects', 'patent', 'naveenfetch',
+    'ai predict', 'speedtest', 'quiz', 'matrix', 'weather', 'cowsay',
+    'calc', 'clock', 'quote', 'theme', 'experience', 'education', 'contact',
+    'curl resume', 'ls', 'pwd', 'date', 'clear', 'exit'
   ];
-
-  const welcomeBanner = `
-<span class="terminal-out-blue">  _   _                            ___  ____  </span>
-<span class="terminal-out-blue"> | \\ | | __ ___   _____  ___ _ __  / _ \\/ ___| </span>
-<span class="terminal-out-blue"> |  \\| |/ _\` \\ \\ / / _ \\/ _ \\ '_ \\| | | \\___ \\ </span>
-<span class="terminal-out-blue"> | |\\  | (_| |\\ V /  __/  __/ | | | |_| |___) |</span>
-<span class="terminal-out-blue"> |_| \\_|\\__,_| \\_/ \\___|\\___|_| |_|\\___/|____/ </span>
-<span class="terminal-out-bold">NaveenOS Kernel v1.0.4-release</span> (Interactive AI & Product CLI)
-
-<span class="terminal-out-yellow">┌─────────────────────────────────────────────────────────────┐</span>
-<span class="terminal-out-yellow">│</span> 💡 <span class="terminal-out-bold">INTERACTIVE HINT:</span>                                         <span class="terminal-out-yellow">│</span>
-<span class="terminal-out-yellow">│</span> • <span class="terminal-out-green">Click any Quick Action pill above</span> to run instantly!      <span class="terminal-out-yellow">│</span>
-<span class="terminal-out-yellow">│</span> • Type <span class="terminal-out-green">'help'</span> for all 25+ commands                          <span class="terminal-out-yellow">│</span>
-<span class="terminal-out-yellow">│</span> • Try: <span class="terminal-out-cyan">'naveenfetch'</span>, <span class="terminal-out-cyan">'ai predict'</span>, <span class="terminal-out-cyan">'speedtest'</span>, or <span class="terminal-out-cyan">'quiz'</span>   <span class="terminal-out-yellow">│</span>
-<span class="terminal-out-yellow">└─────────────────────────────────────────────────────────────┘</span>
-`;
 
   function printLine(text, className = '') {
     const line = document.createElement('div');
@@ -48,7 +34,12 @@ export function initTerminal() {
 
   function initScreen() {
     output.innerHTML = '';
-    printLine(welcomeBanner, 'terminal-out-muted');
+    printLine(`
+<div style="padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 6px;">
+  <span class="terminal-out-green" style="font-weight:700;">NaveenOS v1.0 [Release x86_64]</span> · Naveen S Portfolio
+  <div style="color: #64748b; font-size: 0.8rem; margin-top: 3px;">Type <span class="terminal-out-blue">'help'</span> or click any suggestion pill above to explore.</div>
+</div>
+`);
   }
 
   function openTerminal() {
@@ -56,7 +47,7 @@ export function initTerminal() {
     if (output.children.length === 0) {
       initScreen();
     }
-    setTimeout(() => input.focus(), 50);
+    setTimeout(() => input.focus(), 60);
   }
 
   function closeTerminal() {
@@ -69,8 +60,7 @@ export function initTerminal() {
     { text: "Simplicity is prerequisite for reliability.", author: "Edsger W. Dijkstra" },
     { text: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
     { text: "Design is not just what it looks like and feels like. Design is how it works.", author: "Steve Jobs" },
-    { text: "Neural networks are software 2.0. We are writing programs with optimization rather than logic.", author: "Andrej Karpathy" },
-    { text: "The best way to predict the future is to invent it.", author: "Alan Kay" }
+    { text: "Neural networks are software 2.0. We are writing programs with optimization rather than logic.", author: "Andrej Karpathy" }
   ];
 
   // Quiz Questions
@@ -104,7 +94,7 @@ export function initTerminal() {
 
     printLine(`<span class="terminal-prompt-sym">naveen@portfolio:~$</span> ${cmd}`, 'terminal-prompt-echo');
 
-    // Handle Quiz In-Progress
+    // Handle Quiz
     if (quizState.active) {
       handleQuizAnswer(cmd);
       return;
@@ -119,39 +109,98 @@ export function initTerminal() {
       case 'hi':
       case 'hello':
       case 'hey':
-        printLine(`Hello! Welcome to <span class="terminal-out-blue">NaveenOS v1.0</span>. Type <span class="terminal-out-green">'help'</span> for all commands or try <span class="terminal-out-green">'naveenfetch'</span>!`);
+        printLine(`Hello! Welcome to <span class="terminal-out-blue">NaveenOS v1.0</span>. Type <span class="terminal-out-green">'help'</span> or click any suggestion above.`);
         break;
 
       case 'help':
         printLine(`
-<span class="terminal-out-yellow">✦ NAVEEN OS COMMAND REFERENCE ✦</span>
+<span class="terminal-out-yellow" style="font-weight:700;">COMMAND DIRECTORY</span>
 
-<span class="terminal-out-cyan">[Portfolio & AI Experience]</span>
-  <span class="terminal-out-green">naveenfetch</span>        Display developer ASCII status card & specs
-  <span class="terminal-out-green">ai predict &lt;text&gt;</span>  Run live CrowdGuard AI density inference simulation
-  <span class="terminal-out-green">patent sim</span>          Stream real-time 21-landmark gesture telemetry
-  <span class="terminal-out-green">sudo hire naveen</span>    Recruiter fast-track easter egg & collaboration
-  <span class="terminal-out-green">whoami / about</span>      Display bio, positioning & core philosophy
-  <span class="terminal-out-green">skills</span>              List AI/ML, Data & Design tool ecosystem
-  <span class="terminal-out-green">projects</span>            Inspect project architecture & case studies
-  <span class="terminal-out-green">patent</span>              Indian Patent Application 202541055330 A details
-  <span class="terminal-out-green">education</span>           Academic metrics & B.Tech AI & DS standing
-  <span class="terminal-out-green">curl resume</span>         Open and view full official resume sheet
+<span class="terminal-out-cyan">[Portfolio]</span>
+  <span class="terminal-out-green">whoami</span>       Display bio, positioning & core philosophy
+  <span class="terminal-out-green">skills</span>       List AI/ML, Data & Design tool ecosystem
+  <span class="terminal-out-green">projects</span>     Inspect project architecture & case studies
+  <span class="terminal-out-green">patent</span>       Indian Patent Application 202541055330 A details
+  <span class="terminal-out-green">education</span>    Academic metrics & B.Tech AI & DS standing (2023-2027)
+  <span class="terminal-out-green">experience</span>   Display leadership & technical roles
+  <span class="terminal-out-green">contact</span>      Display official communication channels
+  <span class="terminal-out-green">naveenfetch</span>  Display developer ASCII status card & specs
+  <span class="terminal-out-green">curl resume</span>  View official resume sheet
 
-<span class="terminal-out-cyan">[Interactive Developer Utilities & Fun]</span>
-  <span class="terminal-out-green">weather &lt;city&gt;</span>      Live simulated ASCII weather forecast
-  <span class="terminal-out-green">cowsay &lt;message&gt;</span>    Linux ASCII cow speaking your message
-  <span class="terminal-out-green">calc &lt;math expr&gt;</span>    Interactive CLI math calculator
-  <span class="terminal-out-green">speedtest</span>           Animated bandwidth & ping benchmark
-  <span class="terminal-out-green">hack &lt;target&gt;</span>       Hollywood hacker decryption simulation
-  <span class="terminal-out-green">matrix</span>              Matrix green digital rain stream
-  <span class="terminal-out-green">clock</span>               World timezone clock (Chennai, SF, London, Tokyo)
-  <span class="terminal-out-green">quote / fortune</span>     Get legendary tech & AI engineering wisdom
-  <span class="terminal-out-green">quiz</span>                Start interactive 3-question AI/UX challenge
-  <span class="terminal-out-green">theme &lt;name&gt;</span>        Change CRT theme (<span class="terminal-out-green">matrix</span> | <span class="terminal-out-green">amber</span> | <span class="terminal-out-green">cyberpunk</span> | <span class="terminal-out-green">mono</span>)
+<span class="terminal-out-cyan">[Interactive Tools & Games]</span>
+  <span class="terminal-out-green">ai predict</span>   Run live CrowdGuard AI density inference simulation
+  <span class="terminal-out-green">speedtest</span>    Run real-time bandwidth & latency benchmark
+  <span class="terminal-out-green">quiz</span>         Start interactive 3-question AI/UX challenge
+  <span class="terminal-out-green">matrix</span>       Matrix digital rain animation
+  <span class="terminal-out-green">weather</span>      Simulated ASCII weather forecast (e.g. weather chennai)
+  <span class="terminal-out-green">cowsay</span>       Linux ASCII cow speaking your text
+  <span class="terminal-out-green">calc</span>         CLI math calculator (e.g. calc 42 * 10)
+  <span class="terminal-out-green">clock</span>        Multi-timezone world clock
+  <span class="terminal-out-green">theme</span>        Change CRT theme (matrix | cyberpunk | amber | mono)
 
-<span class="terminal-out-cyan">[Unix Standard]</span>
-  <span class="terminal-out-green">ls</span> | <span class="terminal-out-green">pwd</span> | <span class="terminal-out-green">date</span> | <span class="terminal-out-green">echo &lt;str&gt;</span> | <span class="terminal-out-green">uptime</span> | <span class="terminal-out-green">clear</span> | <span class="terminal-out-green">exit</span>
+<span class="terminal-out-cyan">[System]</span>
+  <span class="terminal-out-green">clear</span> | <span class="terminal-out-green">ls</span> | <span class="terminal-out-green">pwd</span> | <span class="terminal-out-green">date</span> | <span class="terminal-out-green">exit</span>
+`);
+        break;
+
+      case 'whoami':
+      case 'about':
+        printLine(`
+<span class="terminal-out-blue" style="font-weight:700;">NAVEEN S</span>
+Role: UI/UX Designer · AI/ML Enthusiast · Machine Learning Engineer
+Location: Chennai, India
+Philosophy: "Minimal on the surface. Intelligent underneath."
+Positioning: AI × Design × Data × Product Thinking
+`);
+        break;
+
+      case 'skills':
+        printLine(`
+<span class="terminal-out-yellow">AI & Machine Learning:</span> Python, PyTorch, YOLOv8, OpenCV, Scikit-Learn, LangChain, RAG
+<span class="terminal-out-yellow">Design & Prototyping:</span> Figma, UI/UX Design Systems, Wireframing, Micro-interactions
+<span class="terminal-out-yellow">Data & Systems:</span> Pandas, NumPy, MySQL, Docker, Git, JavaScript (ES6+), VS Code
+`);
+        break;
+
+      case 'projects':
+        printLine(`
+[01] <span class="terminal-out-green">CrowdGuard AI</span> — Computer Vision & Risk Prediction (YOLOv8, OpenCV, Flask)
+[02] <span class="terminal-out-green">BrainRot</span> — Digital Wellbeing & Behavioral Analytics Platform
+[03] <span class="terminal-out-green">Conversational AI</span> — Enterprise RAG & Multi-Agent Assistant Suite
+`);
+        break;
+
+      case 'patent':
+        printLine(`
+<span class="terminal-out-yellow">INDIAN PATENT APPLICATION</span>
+Title: Gesture Controlled Mouse Interface for Physically Impaired Users
+Status: Published / Pending (App No. <strong>202541055330 A</strong>)
+Role: Co-inventor
+Tech: MediaPipe 21 Hand-Landmark Spatial Feature Extraction
+`);
+        break;
+
+      case 'education':
+        printLine(`
+<span class="terminal-out-blue">B.Tech in Artificial Intelligence & Data Science</span>
+Institution: Peri Institute of Technology, Chennai
+Status: Undergraduate (2023 — 2027) | Cumulative CGPA: 8.0 / 10.0
+`);
+        break;
+
+      case 'experience':
+        printLine(`
+• <span class="terminal-out-blue">2025-2026: UI/UX Event Coordinator</span> (College & Tech Symposiums)
+• <span class="terminal-out-blue">2025: Conversational AI & ML Projects</span> (Research & RAG Workflows)
+• <span class="terminal-out-blue">2023-2027: B.Tech AI & Data Science</span> (Peri Institute of Technology)
+`);
+        break;
+
+      case 'contact':
+        printLine(`
+Email: <span class="terminal-out-green">naveens1077@gmail.com</span>
+GitHub: <span class="terminal-out-cyan">https://github.com/naveens005</span>
+LinkedIn: <span class="terminal-out-cyan">https://linkedin.com</span>
 `);
         break;
 
@@ -168,53 +217,26 @@ export function initTerminal() {
 <span class="terminal-out-blue">       /:/  /     |:|::/  / </span>   <span class="terminal-out-yellow">Stack:</span> Python · PyTorch · YOLOv8 · OpenCV · Figma
 <span class="terminal-out-blue">      /:/  /      |:|\\/__/  </span>   <span class="terminal-out-yellow">Availability:</span> Open for AI/ML & UI/UX Roles
 <span class="terminal-out-blue">      \\/__/       |:|__|    </span>   <span class="terminal-out-yellow">Location:</span> Chennai, India (IST +05:30)
-
-<span style="color:#ef4444">███</span><span style="color:#f97316">███</span><span style="color:#eab308">███</span><span style="color:#22c55e">███</span><span style="color:#06b6d4">███</span><span style="color:#3b82f6">███</span><span style="color:#a855f7">███</span><span style="color:#ec4899">███</span>
 `);
         break;
 
       case 'ai':
-        if (args[0] === 'predict' || args[0] === 'test') {
-          const promptScene = args.slice(1).join(' ') || 'Heavy crowd near metro station platform';
-          runAiInference(promptScene);
-        } else {
-          printLine(`Usage: <span class="terminal-out-green">ai predict &lt;scene description&gt;</span>\nExample: <span class="terminal-out-yellow">ai predict dense stadium entrance</span>`);
-        }
-        break;
-
       case 'predict':
-        runAiInference(argsStr || 'Dense transit bottleneck scenario');
+        const scene = argsStr || 'Heavy crowd near metro station platform';
+        runAiInference(scene);
         break;
 
-      case 'patent':
-        if (args[0] === 'sim' || args[0] === 'demo') {
-          runPatentStream();
-        } else {
-          printLine(`
-<span class="terminal-out-yellow">PATENT APPLICATION (INDIA)</span>
-Title: Gesture Controlled Mouse Interface for Physically Impaired Users
-Status: Published / Pending (App No. <strong>202541055330 A</strong>)
-Role: Co-inventor
-Architecture: MediaPipe 21 Hand-Landmark Spatial Feature Extraction
-Try <span class="terminal-out-green">'patent sim'</span> to stream live landmark telemetry!
-`);
-        }
+      case 'speedtest':
+        runSpeedtest();
         break;
 
-      case 'sudo':
-        if (args.join(' ').toLowerCase() === 'hire naveen') {
-          printLine(`
-<span class="terminal-out-green">[AUTH SUCCESS] Root privilege granted to hiring manager.</span>
-[EVALUATING CANDIDATE] Naveen S (AI/ML Engineer & UI/UX Designer)
-[METRICS] Technical Foundation: 98% | Product Craft: 96% | Team Synergy: 100%
-<span class="terminal-out-cyan">[ACTION] Initializing direct connection to naveens1077@gmail.com...</span>
-`);
-          setTimeout(() => {
-            window.location.href = 'mailto:naveens1077@gmail.com?subject=Opportunity%20Discussion%20with%20Naveen%20S&body=Hi%20Naveen,%20we%20reviewed%20your%20portfolio%20and%20would%20love%20to%20connect!';
-          }, 1200);
-        } else {
-          printLine('User naveen is in sudoers file. Incident logged.', 'terminal-out-yellow');
-        }
+      case 'quiz':
+        startQuiz();
+        break;
+
+      case 'matrix':
+        printLine('Entering the Matrix...', 'terminal-out-green');
+        runMatrixEffect();
         break;
 
       case 'weather':
@@ -222,25 +244,16 @@ Try <span class="terminal-out-green">'patent sim'</span> to stream live landmark
         break;
 
       case 'cowsay':
-        const cowMsg = argsStr || 'NaveenOS: Minimal on the surface. Intelligent underneath.';
-        showCowsay(cowMsg);
+        showCowsay(argsStr || 'Minimal on the surface. Intelligent underneath.');
         break;
 
       case 'calc':
       case 'eval':
         if (!argsStr) {
-          printLine('Usage: <span class="terminal-out-green">calc &lt;expression&gt;</span> (e.g. calc 24 * 60, calc sqrt(144))');
+          printLine('Usage: calc &lt;expression&gt; (e.g. calc 42 * 10)');
         } else {
           calculateExpr(argsStr);
         }
-        break;
-
-      case 'speedtest':
-        runSpeedtest();
-        break;
-
-      case 'hack':
-        runHackSim(argsStr || 'defense-grid.mainframe.local');
         break;
 
       case 'clock':
@@ -252,10 +265,6 @@ Try <span class="terminal-out-green">'patent sim'</span> to stream live landmark
       case 'fortune':
         const randomQ = quotes[Math.floor(Math.random() * quotes.length)];
         printLine(`\n<span class="terminal-out-cyan">"${randomQ.text}"</span>\n<span class="terminal-out-muted">— ${randomQ.author}</span>\n`);
-        break;
-
-      case 'quiz':
-        startQuiz();
         break;
 
       case 'theme':
@@ -274,85 +283,28 @@ Try <span class="terminal-out-green">'patent sim'</span> to stream live landmark
       case 'curl':
       case 'wget':
         if (args[0] && (args[0].includes('resume') || args[0].includes('cv'))) {
-          printLine('Fetching official resume sheet from memory...', 'terminal-out-green');
+          printLine('Opening official resume sheet...', 'terminal-out-green');
           setTimeout(() => {
             const resumeBtn = document.querySelector('.resume-trigger-btn');
             if (resumeBtn) resumeBtn.click();
-          }, 600);
+          }, 400);
         } else {
-          printLine(`curl: (7) Failed to connect to ${args[0] || 'host'}: Port unreachable`, 'terminal-out-red');
+          printLine(`curl: connected to ${args[0] || 'remote'}. HTTP/2 200 OK`, 'terminal-out-muted');
         }
         break;
 
-      case 'cat':
-        if (args[0] === 'resume' || args[0] === 'resume.txt' || args[0] === 'resume.pdf') {
+      case 'sudo':
+        if (args.join(' ').toLowerCase() === 'hire naveen') {
           printLine(`
---------------------------------------------------
-<span class="terminal-out-bold">NAVEEN S — AI/ML Engineer & UI/UX Designer</span>
-Chennai, India | naveens1077@gmail.com
-GitHub: https://github.com/naveens005
-Education: B.Tech AI & DS (2023 — 2027) | CGPA 8.0
-Patent: Gesture Controlled Mouse (App No. 202541055330 A)
-Core Stack: Python, YOLOv8, OpenCV, PyTorch, Figma, SQL
---------------------------------------------------
+<span class="terminal-out-green">[AUTH GRANTED] Connecting to Naveen S...</span>
+Opening your default email app to email <strong>naveens1077@gmail.com</strong>...
 `);
+          setTimeout(() => {
+            window.location.href = 'mailto:naveens1077@gmail.com?subject=Opportunity%20Discussion%20with%20Naveen%20S';
+          }, 800);
         } else {
-          printLine(`cat: ${args[0] || 'file'}: No such file or directory`, 'terminal-out-muted');
+          printLine('User naveen is in sudoers file. Incident reported.', 'terminal-out-yellow');
         }
-        break;
-
-      case 'whoami':
-      case 'about':
-        printLine(`
-<span class="terminal-out-blue">NAVEEN S</span>
-Role: UI/UX Designer · AI/ML Enthusiast · Machine Learning Engineer
-Location: Chennai, India
-Philosophy: "Minimal on the surface. Intelligent underneath."
-Positioning: AI × Design × Data × Product Thinking
-`);
-        break;
-
-      case 'skills':
-        printLine(`
-<span class="terminal-out-yellow">AI & Machine Learning:</span>
-  Python, PyTorch, YOLOv8, OpenCV, Scikit-Learn, LangChain, RAG Architectures
-<span class="terminal-out-yellow">Design & Prototyping:</span>
-  Figma, UI/UX Design Systems, Wireframing, Micro-interactions, Usability Testing
-<span class="terminal-out-yellow">Data & Infrastructure:</span>
-  Pandas, NumPy, MySQL, Docker, Git, VS Code, Next.js / Modern JS
-`);
-        break;
-
-      case 'projects':
-        printLine(`
-[01] <span class="terminal-out-green">CrowdGuard AI</span> — Computer Vision & Risk Prediction (YOLOv8, OpenCV, Flask)
-[02] <span class="terminal-out-green">BrainRot</span> — Digital Wellbeing & Behavioral Analytics Platform
-[03] <span class="terminal-out-green">Conversational AI</span> — Enterprise RAG & Multi-Agent Assistant Suite
-`);
-        break;
-
-      case 'experience':
-        printLine(`
-• <span class="terminal-out-blue">2025-2026: UI/UX Event Coordinator</span> (College & Tech Symposiums)
-• <span class="terminal-out-blue">2025: Conversational AI & ML Projects</span> (Research & RAG Workflows)
-• <span class="terminal-out-blue">2023-2027: B.Tech AI & Data Science</span> (Peri Institute of Technology)
-`);
-        break;
-
-      case 'education':
-        printLine(`
-<span class="terminal-out-blue">B.Tech in Artificial Intelligence & Data Science</span>
-Institution: Peri Institute of Technology, Chennai
-Status: Undergraduate (2023 — 2027) | CGPA: 8.0 / 10.0
-`);
-        break;
-
-      case 'contact':
-        printLine(`
-Email: <span class="terminal-out-green">naveens1077@gmail.com</span>
-GitHub: <span class="terminal-out-cyan">https://github.com/naveens005</span>
-LinkedIn: <span class="terminal-out-cyan">https://linkedin.com</span>
-`);
         break;
 
       case 'ls':
@@ -362,7 +314,6 @@ LinkedIn: <span class="terminal-out-cyan">https://linkedin.com</span>
 <span class="terminal-out-blue">drwxr-xr-x</span>  skills/
 <span class="terminal-out-green">-rw-r--r--</span>  resume.pdf
 <span class="terminal-out-muted">-rw-r--r--</span>  manifesto.txt
-<span class="terminal-out-muted">-rw-r--r--</span>  crowdguard_yolov8.weights
 `);
         break;
 
@@ -372,19 +323,6 @@ LinkedIn: <span class="terminal-out-cyan">https://linkedin.com</span>
 
       case 'date':
         printLine(new Date().toString());
-        break;
-
-      case 'echo':
-        printLine(argsStr || '');
-        break;
-
-      case 'uptime':
-        printLine('up 42 days, 13:37, 1 user, load average: 0.12, 0.08, 0.05');
-        break;
-
-      case 'matrix':
-        printLine('Entering the Matrix...', 'terminal-out-green');
-        runMatrixEffect();
         break;
 
       case 'clear':
@@ -404,37 +342,19 @@ LinkedIn: <span class="terminal-out-cyan">https://linkedin.com</span>
   // AI Model Simulation
   function runAiInference(scene) {
     printLine(`\n[MODEL INFERENCE] Target: <span class="terminal-out-cyan">"${scene}"</span>`, 'terminal-out-bold');
-    printLine('[1/3] Ingesting video stream & extracting spatial features...', 'terminal-out-muted');
+    printLine('[1/2] Processing YOLOv8 feature tensors...', 'terminal-out-muted');
 
     setTimeout(() => {
-      printLine('[2/3] Running YOLOv8 object tensor detection & Gaussian KDE...', 'terminal-out-muted');
-      setTimeout(() => {
-        const count = Math.floor(Math.random() * 80) + 95;
-        const riskPct = Math.floor(Math.random() * 30) + 68;
-        printLine(`
+      const count = Math.floor(Math.random() * 60) + 110;
+      const riskPct = Math.floor(Math.random() * 25) + 72;
+      printLine(`
 <span class="terminal-out-green">✓ INFERENCE COMPLETE</span>
-  Detected Entities: <strong>${count} pedestrians</strong>
+  Pedestrian Count: <strong>${count} entities</strong>
   Congestion Density: <strong>${riskPct}%</strong>
-  Bottleneck Hazard: <span class="terminal-out-red">CRITICAL RISK DETECTED</span>
-  Recommendation: <span class="terminal-out-yellow">Reroute foot-traffic via Corridor B (4-6 min ahead)</span>
+  Bottleneck Status: <span class="terminal-out-red">CRITICAL RISK FORECASTED</span>
+  Action: <span class="terminal-out-yellow">CrowdGuard automated reroute alert dispatched</span>
 `);
-      }, 500);
-    }, 400);
-  }
-
-  // Patent Gesture Stream
-  function runPatentStream() {
-    printLine('\n<span class="terminal-out-yellow">=== MEDIA-PIPE 21-LANDMARK GESTURE TELEMETRY ===</span>', 'terminal-out-bold');
-    const steps = [
-      '[FRAME 001] Landmark 0 (Wrist): X:0.51 Y:0.82 Z:0.00 | Hand Detected',
-      '[FRAME 014] Landmark 8 (Index Tip): X:0.54 Y:0.28 Z:-0.04 | Velocity: 1.2px/ms',
-      '[FRAME 028] Spatial Vector Distance [Index, Thumb] = 0.018 &lt; Threshold(0.025)',
-      '<span class="terminal-out-green">>>> EVENT TRIGGERED: PINCH_CLICK (Left Mouse Down) <<<</span>',
-      '[FRAME 042] Index + Middle Parallel Motion: DeltaY = +0.14 | Scroll Event Dispatched'
-    ];
-    steps.forEach((step, idx) => {
-      setTimeout(() => printLine(step), (idx + 1) * 280);
-    });
+    }, 450);
   }
 
   // Cowsay
@@ -457,12 +377,10 @@ LinkedIn: <span class="terminal-out-cyan">https://linkedin.com</span>
   function showWeather(city) {
     const cityName = city.charAt(0).toUpperCase() + city.slice(1);
     printLine(`
-<span class="terminal-out-yellow">Weather Report for ${cityName}:</span>
-     \\   /     Clear Sky / Optimal for Coding
-      .-.      Temperature: <strong>31°C / 88°F</strong>
-   ― (   ) ―   Humidity: 64% | Wind: 14 km/h ENE
-      \`-\`      UV Index: Moderate
-     /   \\     Forecast: Clear & Intelligent Productive Flow ☀️
+<span class="terminal-out-yellow">Weather for ${cityName}:</span>
+     \\   /     Clear Sky / <strong>31°C / 88°F</strong>
+   ― (   ) ―   Humidity: 64% | Optimal for Deep Work ☀️
+     /   \\
 `);
   }
 
@@ -471,49 +389,28 @@ LinkedIn: <span class="terminal-out-cyan">https://linkedin.com</span>
     try {
       const sanitized = expr.toLowerCase()
         .replace(/sqrt\(([^)]+)\)/g, 'Math.sqrt($1)')
-        .replace(/sin\(([^)]+)\)/g, 'Math.sin($1)')
-        .replace(/cos\(([^)]+)\)/g, 'Math.cos($1)')
-        .replace(/pi/g, 'Math.PI')
-        .replace(/[^0-9+\-*/().Math,sqrtisncpoe]/g, '');
-
-      // Evaluate safely
+        .replace(/[^0-9+\-*/().Math,sqrt]/g, '');
       const result = Function(`'use strict'; return (${sanitized})`)();
-      printLine(`<span class="terminal-out-muted">${expr} =</span> <span class="terminal-out-green" style="font-weight:700; font-size:1rem;">${result}</span>`);
+      printLine(`<span class="terminal-out-muted">${expr} =</span> <span class="terminal-out-green" style="font-weight:700;">${result}</span>`);
     } catch (e) {
-      printLine(`<span class="terminal-out-red">calc: syntax error in expression '${expr}'</span>`);
+      printLine(`<span class="terminal-out-red">calc: syntax error in '${expr}'</span>`);
     }
   }
 
   // Speedtest
   function runSpeedtest() {
-    printLine('\n<span class="terminal-out-cyan">Testing connection to NaveenOS Global Edge CDN...</span>');
-    printLine('Latency Ping: <span class="terminal-out-green">11 ms</span> | Jitter: <span class="terminal-out-green">1.2 ms</span>');
+    printLine('\n<span class="terminal-out-cyan">Testing connection to Global Edge CDN...</span>');
     let pct = 0;
     const interval = setInterval(() => {
-      pct += 20;
+      pct += 25;
       const barLen = Math.floor(pct / 5);
       const bar = '█'.repeat(barLen) + '-'.repeat(20 - barLen);
-      printLine(`[${bar}] ${pct}% | Bandwidth: <span class="terminal-out-green">${(pct * 9.2).toFixed(1)} Mbps</span>`);
+      printLine(`[${bar}] ${pct}% | <span class="terminal-out-green">${(pct * 9.2).toFixed(1)} Mbps</span>`);
       if (pct >= 100) {
         clearInterval(interval);
-        printLine('<span class="terminal-out-bold" style="color:#10b981;">✓ Download: 924.8 Mbps | Upload: 450.2 Mbps (Ultra High Performance)</span>\n');
+        printLine('<span class="terminal-out-green" style="font-weight:700;">✓ Download: 920 Mbps | Latency: 12ms (Ultra Fast)</span>\n');
       }
-    }, 150);
-  }
-
-  // Hack Sim
-  function runHackSim(target) {
-    printLine(`\n<span class="terminal-out-red">[INITIATING PENETRATION TEST] -> ${target}</span>`);
-    const logs = [
-      'Scanning open ports... [22, 80, 443, 8080 OPEN]',
-      'Injecting memory overflow payload into subsystem...',
-      'Bypassing quantum encryption firewall: 0x7FFF98A2...',
-      'Cracking hash: $6$rounds=5000$salts... [MATCH FOUND]',
-      '<span class="terminal-out-green">ACCESS GRANTED. Root privileges acquired. Welcome to cyberspace.</span>'
-    ];
-    logs.forEach((log, idx) => {
-      setTimeout(() => printLine(log), (idx + 1) * 300);
-    });
+    }, 120);
   }
 
   // World Clock
@@ -522,8 +419,8 @@ LinkedIn: <span class="terminal-out-cyan">https://linkedin.com</span>
     const timeIn = (tz) => now.toLocaleTimeString('en-US', { timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
 
     printLine(`
-<span class="terminal-out-yellow">✦ GLOBAL WORLD CLOCK ✦</span>
-  🇮🇳 Chennai (IST):       <span class="terminal-out-green">${timeIn('Asia/Kolkata')} (Current Local)</span>
+<span class="terminal-out-yellow">✦ WORLD CLOCK ✦</span>
+  🇮🇳 Chennai (IST):       <span class="terminal-out-green">${timeIn('Asia/Kolkata')}</span>
   🇺🇸 San Francisco (PST): <span class="terminal-out-blue">${timeIn('America/Los_Angeles')}</span>
   🇬🇧 London (GMT/BST):    <span class="terminal-out-cyan">${timeIn('Europe/London')}</span>
   🇯🇵 Tokyo (JST):         <span class="terminal-out-purple">${timeIn('Asia/Tokyo')}</span>
@@ -533,8 +430,8 @@ LinkedIn: <span class="terminal-out-cyan">https://linkedin.com</span>
   // Quiz Game
   function startQuiz() {
     quizState = { active: true, currentQ: 0, score: 0 };
-    printLine(`\n<span class="terminal-out-yellow">✦ WELCOME TO THE AI & UX TRIVIA CHALLENGE ✦</span>`);
-    printLine('Answer by typing the option number (<span class="terminal-out-green">1</span>, <span class="terminal-out-green">2</span>, <span class="terminal-out-green">3</span>, or <span class="terminal-out-green">4</span>).\n');
+    printLine(`\n<span class="terminal-out-yellow">✦ AI & UX TRIVIA CHALLENGE ✦</span>`);
+    printLine('Type <span class="terminal-out-green">1</span>, <span class="terminal-out-green">2</span>, <span class="terminal-out-green">3</span>, or <span class="terminal-out-green">4</span> to answer:\n');
     askQuizQuestion();
   }
 
@@ -560,9 +457,8 @@ LinkedIn: <span class="terminal-out-cyan">https://linkedin.com</span>
       askQuizQuestion();
     } else {
       printLine(`
-<span class="terminal-out-yellow">🎉 QUIZ COMPLETE!</span>
-Your Score: <strong>${quizState.score} / ${quizQuestions.length}</strong> (${Math.round((quizState.score / quizQuestions.length) * 100)}%)
-${quizState.score === 3 ? '<span class="terminal-out-green">Outstanding! You have master-level AI & UX intuition!</span>' : 'Great effort! Keep building intelligent systems!'}
+<span class="terminal-out-yellow">🎉 QUIZ COMPLETE!</span> Score: <strong>${quizState.score} / ${quizQuestions.length}</strong>
+${quizState.score === 3 ? '<span class="terminal-out-green">Master-level AI & UX intuition!</span>' : 'Great effort!'}
 `);
       quizState.active = false;
     }
@@ -575,31 +471,32 @@ ${quizState.score === 3 ? '<span class="terminal-out-green">Outstanding! You hav
       const randStr = Array.from({ length: 45 }, () => (Math.random() > 0.5 ? '1' : '0')).join('');
       printLine(randStr, 'terminal-out-green');
       count++;
-      if (count > 16) {
+      if (count > 12) {
         clearInterval(interval);
         printLine('Matrix connection stabilized. System operational.', 'terminal-out-blue');
       }
     }, 60);
   }
 
-  // Quick Command Chips Click Execution
-  const chips = modal.querySelectorAll('.terminal-chip');
-  chips.forEach(chip => {
-    chip.addEventListener('click', (e) => {
+  // Event Listeners for Suggestion Pills (Instant Reliable Execution)
+  modal.addEventListener('click', (e) => {
+    const chip = e.target.closest('.terminal-chip');
+    if (chip) {
+      e.preventDefault();
       e.stopPropagation();
       const cmd = chip.getAttribute('data-cmd');
       if (cmd) {
-        input.value = cmd;
+        input.value = '';
         input.focus();
-        setTimeout(() => {
-          input.value = '';
-          handleCommand(cmd);
-        }, 150);
+        handleCommand(cmd);
       }
-    });
+      return;
+    }
+
+    if (e.target === modal) closeTerminal();
   });
 
-  // Tab Autocomplete & Keyboard Handler
+  // Tab Autocomplete & History Navigation
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       const val = input.value;
@@ -631,10 +528,6 @@ ${quizState.score === 3 ? '<span class="terminal-out-green">Outstanding! You hav
 
   triggerBtns.forEach(btn => btn.addEventListener('click', openTerminal));
   if (closeBtn) closeBtn.addEventListener('click', closeTerminal);
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeTerminal();
-  });
 
   return { openTerminal, closeTerminal };
 }
