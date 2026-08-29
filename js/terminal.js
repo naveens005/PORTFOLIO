@@ -167,6 +167,7 @@ Positioning: AI × Design × Data × Product Thinking
 [01] <span class="terminal-out-green">CrowdGuard AI</span> — Computer Vision & Risk Prediction (YOLOv8, OpenCV, Flask)
 [02] <span class="terminal-out-green">BrainRot</span> — Digital Wellbeing & Behavioral Analytics Platform
 [03] <span class="terminal-out-green">Conversational AI</span> — Enterprise RAG & Multi-Agent Assistant Suite
+[04] <span class="terminal-out-green">Fake ID Screening AI</span> — Document Forgery & ELA Tamper Detection Pipeline
 `);
         break;
 

@@ -31,6 +31,14 @@ export function initAIAssistant(callbacks = {}) {
       answer: "Naveen's Conversational AI Suite includes enterprise multi-agent workflows and RAG pipelines that index vector knowledge bases to provide high-precision, low-latency contextual dialogue."
     },
     {
+      keywords: ['fake', 'identity', 'document', 'screening', 'forgery', 'ela', 'tamper', 'passport'],
+      answer: "AI-Based Fake Identity Document Screening is Naveen's deep learning & computer vision pipeline that detects forged IDs and passports using Error Level Analysis (ELA), frequency FFT analysis, and OCR cross-validation. You can inspect the interactive case study in the Selected Work section or on GitHub: https://github.com/naveens005/AI-Based-Fake-Identity-Document-Screening."
+    },
+    {
+      keywords: ['projects', 'work', 'built', 'portfolio', 'creations'],
+      answer: "Naveen has built four key featured projects: [1] CrowdGuard AI (Computer vision crowd risk prediction), [2] BrainRot (Behavioral AI & digital wellbeing), [3] Conversational AI Suite (Enterprise RAG & multi-agent system), and [4] Fake ID Screening AI (Deep learning document forgery screening). Which one would you like to explore?"
+    },
+    {
       keywords: ['patent', 'invention', 'gesture', 'mouse', 'assistive', 'impaired', '202541055330'],
       answer: "Naveen is the co-inventor of 'Gesture Controlled Mouse Interface for Physically Impaired Users' (Indian Patent App No. 202541055330 A). It maps 21 hand-landmark spatial coordinates via computer vision to allow touchless, precise OS cursor control."
     },

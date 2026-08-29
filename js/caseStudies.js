@@ -81,6 +81,31 @@ export function initCaseStudies() {
         { val: '5x', lbl: 'Reduction in LLM API Costs' }
       ],
       demoType: 'convai_sim'
+    },
+    fake_id_screening: {
+      number: 'PROJECT 04',
+      title: 'AI-Based Fake Identity Document Screening',
+      subtitle: 'Deep Learning & Computer Vision System for Document Forgery & Digital Tampering Detection',
+      tags: ['Computer Vision', 'PyTorch', 'OpenCV', 'Error Level Analysis', 'OCR', 'Python', 'Flask'],
+      image: 'assets/images/fake_id_screening.jpg',
+      repoUrl: 'https://github.com/naveens005/AI-Based-Fake-Identity-Document-Screening',
+      problem: `Manual verification of physical and digital identity credentials (passports, national ID cards, driver licenses) is sluggish, susceptible to human fatigue, and fails against sophisticated digital manipulation techniques like copy-move splicing, face replacement, font tampering, and metadata spoofing.`,
+      solution: `Engineered an automated deep learning and computer vision inspection pipeline. The system combines perspective-corrected ROI extraction, Error Level Analysis (ELA) for image compression disparity detection, frequency-domain FFT anomaly screening, and Tesseract/EasyOCR field cross-referencing with MRZ checksum validation to flag forged identity documents in under 450ms.`,
+      architecture: [
+        'Document Ingestion & Automated Quad Perspective Normalization (OpenCV)',
+        'Error Level Analysis (ELA) Compression Artifact Grid Extraction',
+        'Frequency Domain FFT Spectrum & Texture Inconsistency Mapping',
+        'Deep Feature Extraction & Photo Splicing Detection Network',
+        'OCR Text Layer Extraction & MRZ / Field Cross-Validation Logic',
+        'Real-Time Fraud Risk Scoring Engine with Localization Tamper Heatmaps'
+      ],
+      metrics: [
+        { val: '96.8%', lbl: 'Forgery Detection Accuracy' },
+        { val: '420 ms', lbl: 'Full Inference & Scan Latency' },
+        { val: '99.1%', lbl: 'OCR Field Extraction Precision' },
+        { val: '0.8%', lbl: 'False Positive Rate' }
+      ],
+      demoType: 'fake_id_sim'
     }
   };
 
@@ -97,6 +122,14 @@ export function initCaseStudies() {
         <div class="project-tags" style="margin-top: 8px;">
           ${data.tags.map(t => `<span class="tag">${t}</span>`).join('')}
         </div>
+        ${data.repoUrl ? `
+          <div style="margin-top: 14px;">
+            <a href="${data.repoUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="display: inline-flex; gap: 6px; align-items: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              View GitHub Repository ↗
+            </a>
+          </div>
+        ` : ''}
       </div>
 
       <div class="cs-media-wrap" style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); max-height: 400px;">
@@ -217,6 +250,50 @@ export function initCaseStudies() {
         </div>
       `;
       initConvAISim();
+    } else if (type === 'fake_id_sim') {
+      container.innerHTML = `
+        <div class="live-demo-playground">
+          <div class="demo-controls-bar">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">● AI DOCUMENT FORGERY & ELA SCANNER</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #888;">Select sample credential to test</span>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+            <button class="ai-chip" data-doc="authentic" style="cursor: pointer; border-color: var(--text-primary);">Sample 1: Authentic Passport</button>
+            <button class="ai-chip" data-doc="photo_tampered" style="cursor: pointer;">Sample 2: Spliced Photo & Name</button>
+            <button class="ai-chip" data-doc="synthetic" style="cursor: pointer;">Sample 3: Synthetic / AI Generated</button>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="position: relative; background: #090d14; border: 1px solid #1e293b; border-radius: 8px; overflow: hidden; height: 200px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div id="sim-id-card-view" style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; border-radius: 6px; border: 1px dashed rgba(255,255,255,0.15); padding: 10px; background: linear-gradient(135deg, rgba(30,41,59,0.5), rgba(15,23,42,0.8));">
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px;">
+                  <span style="color: #38bdf8; font-weight: 700;" id="sim-card-type">REPUBLIC PASSPORT</span>
+                  <span id="sim-card-num" style="color: #94a3b8;">DOC: AB-982410</span>
+                </div>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                  <div id="sim-card-photo" style="width: 44px; height: 52px; background: #334155; border: 1px solid #475569; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">👤</div>
+                  <div style="font-size: 0.7rem; line-height: 1.4; color: #cbd5e1;">
+                    <div>NAME: <strong id="sim-card-name">ANDERSEN, LIAM J.</strong></div>
+                    <div>DOB: <span id="sim-card-dob">01 JUN 1993</span></div>
+                    <div>EXP: <span id="sim-card-exp">24 NOV 2032</span></div>
+                  </div>
+                </div>
+                <div style="background: rgba(0,0,0,0.4); padding: 4px; border-radius: 3px; font-size: 0.62rem; color: #64748b; letter-spacing: 0.05em;" id="sim-card-mrz">
+                  P&lt;UTOANDERSEN&lt;&lt;LIAM&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>
+                  AB982410&lt;4UTO9306018M3211242&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;02
+                </div>
+              </div>
+              <div id="sim-scan-beam" style="position: absolute; left: 0; right: 0; top: 0; height: 3px; background: #38bdf8; box-shadow: 0 0 10px #38bdf8; display: none; transition: top 0.6s linear;"></div>
+            </div>
+            <div style="background: #090d14; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div id="sim-fraud-output" style="line-height: 1.5; color: #94a3b8; min-height: 120px;">
+                <div style="color: #38bdf8;">[STANDBY] Select a sample document and click Scan below...</div>
+              </div>
+              <button id="btn-run-screening" class="btn btn-primary btn-sm" style="width: 100%; margin-top: 8px;">Run AI Screening Scan ⚡</button>
+            </div>
+          </div>
+        </div>
+      `;
+      initFakeIDSim();
     }
   }
 
@@ -362,6 +439,131 @@ export function initCaseStudies() {
         `;
       });
     });
+  }
+
+  function initFakeIDSim() {
+    const chips = document.querySelectorAll('#sim-playground-container .ai-chip');
+    const scanBtn = document.getElementById('btn-run-screening');
+    const out = document.getElementById('sim-fraud-output');
+    const beam = document.getElementById('sim-scan-beam');
+    const cardType = document.getElementById('sim-card-type');
+    const cardNum = document.getElementById('sim-card-num');
+    const cardName = document.getElementById('sim-card-name');
+    const cardDob = document.getElementById('sim-card-dob');
+    const cardExp = document.getElementById('sim-card-exp');
+    const cardPhoto = document.getElementById('sim-card-photo');
+    const cardMrz = document.getElementById('sim-card-mrz');
+
+    const sampleData = {
+      authentic: {
+        type: 'REPUBLIC PASSPORT',
+        num: 'DOC: AB-982410',
+        name: 'ANDERSEN, LIAM J.',
+        dob: '01 JUN 1993',
+        exp: '24 NOV 2032',
+        photo: '👤',
+        mrz: 'P&lt;UTOANDERSEN&lt;&lt;LIAM&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>AB982410&lt;4UTO9306018M3211242&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;02',
+        verdict: 'AUTHENTIC (VERIFIED)',
+        score: '98.6%',
+        scoreColor: '#10b981',
+        elaStatus: 'Uniform ELA compression matrix. 0 tamper anomalies.',
+        ocrStatus: 'MRZ checksum verified (100% match with text fields).',
+        finalStatus: '<strong style="color:#10b981;">STATUS: VERIFIED GENUINE</strong><br><span style="color:#e2e8f0;">Document passed all biometric, spatial ELA, and cryptographic consistency checks.</span>'
+      },
+      photo_tampered: {
+        type: 'NATIONAL IDENTITY CARD',
+        num: 'DOC: ID-440219',
+        name: 'MILLER, SARAH K.',
+        dob: '14 APR 1998',
+        exp: '19 OCT 2029',
+        photo: '⚠️',
+        mrz: 'I&lt;UTOMILLER&lt;&lt;SARAH&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>ID440219&lt;1UTO9804149F2910195&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;88',
+        verdict: 'FORGERY FLAGGED',
+        score: '23.4%',
+        scoreColor: '#ef4444',
+        elaStatus: 'High-frequency ELA noise disparity detected on photo bounding quad (X:48, Y:58).',
+        ocrStatus: 'Font glyph mismatch detected in Surname & DOB fields (Digital Splice).',
+        finalStatus: '<strong style="color:#ef4444;">STATUS: TAMPERING FLAGGED</strong><br><span style="color:#fca5a5;">High confidence photo insertion & font editing detected. Document rejected.</span>'
+      },
+      synthetic: {
+        type: 'DRIVERS LICENSE',
+        num: 'DOC: DL-992104',
+        name: 'SYNTH_ENTITY_7',
+        dob: '30 DEC 2000',
+        exp: '15 MAY 2028',
+        photo: '🤖',
+        mrz: 'D&lt;UTOSYNTH&lt;&lt;ENTITY&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>DL992104&lt;0UTO0012301M2805151&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;00',
+        verdict: 'SYNTHETIC ARTIFACTS',
+        score: '14.1%',
+        scoreColor: '#f59e0b',
+        elaStatus: 'FFT spectrum analysis shows non-natural GAN/Diffusion texture pattern.',
+        ocrStatus: 'Invalid issuing authority digital watermarking structure.',
+        finalStatus: '<strong style="color:#f59e0b;">STATUS: SYNTHETIC / AI GENERATED</strong><br><span style="color:#fde68a;">Generative diffusion artifacts identified in background guilloche patterns.</span>'
+      }
+    };
+
+    let currentSample = 'authentic';
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.style.borderColor = 'var(--border)');
+        chip.style.borderColor = 'var(--text-primary)';
+        currentSample = chip.getAttribute('data-doc');
+        const s = sampleData[currentSample];
+        if (s) {
+          cardType.textContent = s.type;
+          cardNum.textContent = s.num;
+          cardName.textContent = s.name;
+          cardDob.textContent = s.dob;
+          cardExp.textContent = s.exp;
+          cardPhoto.textContent = s.photo;
+          cardMrz.innerHTML = s.mrz;
+          out.innerHTML = `<div style="color:#38bdf8;">[LOADED] ${s.type} selected. Click "Run AI Screening Scan" below to evaluate.</div>`;
+        }
+      });
+    });
+
+    if (scanBtn) {
+      scanBtn.addEventListener('click', () => {
+        const s = sampleData[currentSample];
+        if (!s) return;
+        scanBtn.disabled = true;
+        scanBtn.textContent = 'Analyzing Document...';
+
+        // Laser scan animation
+        beam.style.display = 'block';
+        beam.style.top = '0px';
+        setTimeout(() => { beam.style.top = '100%'; }, 50);
+
+        out.innerHTML = `
+          <div style="color: #38bdf8;">> [1/4] OpenCV quad perspective normalization... OK</div>
+          <div style="color: #fbbf24;">> [2/4] Computing Error Level Analysis (ELA) grid...</div>
+        `;
+
+        setTimeout(() => {
+          beam.style.top = '0px';
+          out.innerHTML += `
+            <div style="color: #a78bfa;">> [3/4] Optical character recognition & MRZ cross-check...</div>
+            <div style="color: #60a5fa;">> [4/4] Evaluating Deep Forgery Classifier...</div>
+          `;
+        }, 350);
+
+        setTimeout(() => {
+          beam.style.display = 'none';
+          scanBtn.disabled = false;
+          scanBtn.textContent = 'Run AI Screening Scan ⚡';
+          out.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px;">
+              <span>AUTHENTICITY: <strong style="color:${s.scoreColor}; font-size: 1.05rem;">${s.score}</strong></span>
+              <span style="color:${s.scoreColor}; font-weight:700; font-size:0.75rem;">${s.verdict}</span>
+            </div>
+            <div style="font-size:0.68rem; color:#94a3b8; margin-bottom: 2px;">• ELA: ${s.elaStatus}</div>
+            <div style="font-size:0.68rem; color:#94a3b8; margin-bottom: 4px;">• OCR: ${s.ocrStatus}</div>
+            <div style="font-size:0.72rem; padding: 4px 6px; border-radius: 4px; background: rgba(0,0,0,0.3);">${s.finalStatus}</div>
+          `;
+        }, 750);
+      });
+    }
   }
 
   openButtons.forEach(btn => {

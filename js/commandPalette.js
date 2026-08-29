@@ -26,6 +26,7 @@ export function initCommandPalette(callbacks = {}) {
     { id: 'proj-crowdguard', title: 'Case Study: CrowdGuard AI', group: 'Projects', icon: 'eye', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('crowdguard') },
     { id: 'proj-brainrot', title: 'Case Study: BrainRot Analytics', group: 'Projects', icon: 'activity', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('brainrot') },
     { id: 'proj-convai', title: 'Case Study: Conversational AI Suite', group: 'Projects', icon: 'message-square', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('conversational_ai') },
+    { id: 'proj-fake-id', title: 'Case Study: Fake ID Screening AI', group: 'Projects', icon: 'shield', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('fake_id_screening') },
 
     // Actions
     { id: 'act-resume', title: 'View & Download Resume', group: 'Actions', icon: 'file-text', action: () => callbacks.openResume && callbacks.openResume() },
