@@ -168,6 +168,18 @@ Positioning: AI × Design × Data × Product Thinking
 [02] <span class="terminal-out-green">BrainRot</span> — Digital Wellbeing & Behavioral Analytics Platform
 [03] <span class="terminal-out-green">Conversational AI</span> — Enterprise RAG & Multi-Agent Assistant Suite
 [04] <span class="terminal-out-green">Fake ID Screening AI</span> — Document Forgery & ELA Tamper Detection Pipeline
+[05] <span class="terminal-out-green">SpendCompass</span> — Smart Expense Tracker & Local-First Budget Engine (TypeScript, React Native)
+`);
+        break;
+
+      case 'spendcompass':
+      case 'expense':
+        printLine(`
+<span class="terminal-out-yellow">SPENDCOMPASS — SMART EXPENSE TRACKER</span>
+Repo: <span class="terminal-out-cyan">https://github.com/naveens005/EXPENSE-TRACKER</span>
+Stack: TypeScript, React Native, EWMA Seasonality Modeling, On-Device NLP, Local-First
+Architecture: Monorepo (engine, parser, mobile app, standalone Android APK)
+Key Feature: "Can I Afford This?" purchase simulator + 100% privacy-compliant bank SMS parsing without permissions.
 `);
         break;
 

@@ -27,6 +27,7 @@ export function initCommandPalette(callbacks = {}) {
     { id: 'proj-brainrot', title: 'Case Study: BrainRot Analytics', group: 'Projects', icon: 'activity', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('brainrot') },
     { id: 'proj-convai', title: 'Case Study: Conversational AI Suite', group: 'Projects', icon: 'message-square', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('conversational_ai') },
     { id: 'proj-fake-id', title: 'Case Study: Fake ID Screening AI', group: 'Projects', icon: 'shield', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('fake_id_screening') },
+    { id: 'proj-expense-tracker', title: 'Case Study: SpendCompass (Expense Tracker)', group: 'Projects', icon: 'layers', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('expense_tracker') },
 
     // Actions
     { id: 'act-resume', title: 'View & Download Resume', group: 'Actions', icon: 'file-text', action: () => callbacks.openResume && callbacks.openResume() },

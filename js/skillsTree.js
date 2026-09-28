@@ -58,10 +58,10 @@ export function initSkillsTree() {
       id: 'systems',
       category: 'tools',
       name: 'Modern Web & Systems',
-      sub: 'Full Stack & Deployment',
-      desc: 'Responsive web architectures, modular Javascript/ES6, REST APIs, Git versioning.',
-      tags: ['Python / Flask', 'JavaScript (ES6+)', 'HTML5 / Modern CSS', 'Git / GitHub', 'VS Code'],
-      project: 'Full Portfolio & Web Applications'
+      sub: 'Full Stack & Mobile Architecture',
+      desc: 'Responsive web architectures, modular TypeScript/ES6+, mobile frameworks, REST APIs, Git versioning.',
+      tags: ['TypeScript', 'React Native', 'Python / Flask', 'JavaScript (ES6+)', 'Modern HTML5/CSS', 'Git / GitHub', 'VS Code'],
+      project: 'SpendCompass, Portfolio & Web Applications'
     }
   ];
 

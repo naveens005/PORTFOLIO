@@ -35,8 +35,12 @@ export function initAIAssistant(callbacks = {}) {
       answer: "AI-Based Fake Identity Document Screening is Naveen's deep learning & computer vision pipeline that detects forged IDs and passports using Error Level Analysis (ELA), frequency FFT analysis, and OCR cross-validation. You can inspect the interactive case study in the Selected Work section or on GitHub: https://github.com/naveens005/AI-Based-Fake-Identity-Document-Screening."
     },
     {
+      keywords: ['expense', 'spendcompass', 'tracker', 'budget', 'allowance', 'money', 'afford'],
+      answer: "SpendCompass is Naveen's production-grade, local-first daily budget & expense tracker built for Android & iOS. It features an adaptive daily allowance engine with EWMA seasonality modeling, a 'Can I Afford This?' purchase simulator, and 100% privacy-compliant bank SMS parsing without invasive permissions. Check out the GitHub repo at https://github.com/naveens005/EXPENSE-TRACKER or open its case study in the Selected Work section!"
+    },
+    {
       keywords: ['projects', 'work', 'built', 'portfolio', 'creations'],
-      answer: "Naveen has built four key featured projects: [1] CrowdGuard AI (Computer vision crowd risk prediction), [2] BrainRot (Behavioral AI & digital wellbeing), [3] Conversational AI Suite (Enterprise RAG & multi-agent system), and [4] Fake ID Screening AI (Deep learning document forgery screening). Which one would you like to explore?"
+      answer: "Naveen has built five featured projects: [1] CrowdGuard AI (Computer vision crowd risk prediction), [2] BrainRot (Behavioral AI & digital wellbeing), [3] Conversational AI Suite (Enterprise RAG & multi-agent system), [4] Fake ID Screening AI (Deep learning document forgery screening), and [5] SpendCompass (Smart local-first expense tracker & EWMA daily budget engine). Which one would you like to explore?"
     },
     {
       keywords: ['patent', 'invention', 'gesture', 'mouse', 'assistive', 'impaired', '202541055330'],

@@ -106,6 +106,31 @@ export function initCaseStudies() {
         { val: '0.8%', lbl: 'False Positive Rate' }
       ],
       demoType: 'fake_id_sim'
+    },
+    expense_tracker: {
+      number: 'PROJECT 05',
+      title: 'SpendCompass — Smart Expense Tracker',
+      subtitle: 'Local-First, Privacy-First Daily Budget Expense Tracker & Adaptive Allowance Engine',
+      tags: ['TypeScript', 'React Native', 'Financial Modeling', 'EWMA Seasonality', 'On-Device NLP', 'Local-First', 'Android APK'],
+      image: 'assets/images/expense_tracker.jpg',
+      repoUrl: 'https://github.com/naveens005/EXPENSE-TRACKER',
+      problem: `Traditional budgeting and expense tracker apps demand invasive SMS and contact permissions, compromise user financial privacy via continuous third-party cloud synchronization, and offer backward-looking monthly charts that fail to guide spontaneous purchasing decisions in real time.`,
+      solution: `SpendCompass delivers a production-grade, local-first budgeting application with zero cloud tracking. Built with pure TypeScript math engines, it computes an adaptive daily allowance using Exponential Weighted Moving Average (EWMA) weekday/weekend seasonality. It features a live 'Can I Afford This?' purchase simulator across 1 to 30-day amortization horizons and extracts Indian bank SMS transactions (HDFC, SBI, ICICI, etc.) through clipboard and Share Sheet ingestion without invasive OS permissions.`,
+      architecture: [
+        'Monorepo Architecture (packages/engine, packages/parser, apps/mobile, apk_build)',
+        'Pure TypeScript Financial Math Engine with Zero Network/DB Invariants',
+        'Adaptive Daily Allowance Modeling with EWMA Seasonality Weightings',
+        'On-Device Indian Bank SMS Parser (HDFC, SBI, ICICI, Axis) via Clipboard Ingestion',
+        'Interactive "Can I Afford This?" Multi-Horizon Amortization Simulator',
+        'Native Android Compilation Pipeline (aapt2, d8, javac) with Real Haptic Bridge'
+      ],
+      metrics: [
+        { val: '100%', lbl: 'On-Device Privacy (Zero Cloud)' },
+        { val: '1,000+', lbl: 'fast-check Property Test Runs' },
+        { val: '0', lbl: 'Invasive SMS Permissions Required' },
+        { val: '< 15 ms', lbl: 'EWMA Budget Engine Calculation' }
+      ],
+      demoType: 'expense_tracker_sim'
     }
   };
 
@@ -294,6 +319,63 @@ export function initCaseStudies() {
         </div>
       `;
       initFakeIDSim();
+    } else if (type === 'expense_tracker_sim') {
+      container.innerHTML = `
+        <div class="live-demo-playground">
+          <div class="demo-controls-bar">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #10b981;">● SPENDCOMPASS ADAPTIVE BUDGET & "CAN I AFFORD THIS?" SIMULATOR</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #888;">Pure TypeScript EWMA Engine</span>
+          </div>
+
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+            <button class="ai-chip exp-preset-btn active" data-price="250" data-name="Artisan Coffee" style="cursor: pointer; border-color: var(--text-primary);">Coffee: ₹250</button>
+            <button class="ai-chip exp-preset-btn" data-price="1800" data-name="Weekend Dinner" style="cursor: pointer;">Dinner: ₹1,800</button>
+            <button class="ai-chip exp-preset-btn" data-price="4500" data-name="Sneakers" style="cursor: pointer;">Sneakers: ₹4,500</button>
+            <button class="ai-chip exp-preset-btn" data-price="19990" data-name="AirPods Pro" style="cursor: pointer;">AirPods Pro: ₹19,990</button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: #090d14; border: 1px solid #1e293b; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 12px; font-family: var(--font-mono); font-size: 0.78rem;">
+              <div>
+                <label style="color: #94a3b8; display: block; margin-bottom: 4px;">Proposed Purchase: <strong id="sim-item-name" style="color: #fff;">Artisan Coffee</strong></label>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #10b981; font-weight: 700; font-size: 1.1rem;">₹</span>
+                  <input type="number" id="sim-exp-price" value="250" min="50" max="100000" style="background: #111827; border: 1px solid #374151; color: #fff; padding: 6px 10px; border-radius: 6px; font-family: inherit; font-size: 0.95rem; width: 100%;">
+                </div>
+              </div>
+
+              <div>
+                <label style="color: #94a3b8; display: block; margin-bottom: 4px;">Base Daily Allowance: <strong id="sim-disp-allowance" style="color: #38bdf8;">₹1,200/day</strong></label>
+                <input type="range" id="sim-allowance-slider" min="300" max="5000" step="100" value="1200" style="width: 100%; cursor: pointer;">
+              </div>
+
+              <div>
+                <label style="color: #94a3b8; display: block; margin-bottom: 6px;">Amortization Horizon:</label>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                  <button class="ai-chip exp-horizon-btn active" data-days="1" style="cursor: pointer;">1 Day</button>
+                  <button class="ai-chip exp-horizon-btn" data-days="3" style="cursor: pointer;">3 Days</button>
+                  <button class="ai-chip exp-horizon-btn" data-days="7" style="cursor: pointer;">7 Days</button>
+                  <button class="ai-chip exp-horizon-btn" data-days="14" style="cursor: pointer;">14 Days</button>
+                  <button class="ai-chip exp-horizon-btn" data-days="30" style="cursor: pointer;">30 Days</button>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: #090d14; border: 1px solid #1e293b; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div id="sim-exp-result" style="line-height: 1.5; color: #94a3b8;">
+                <!-- Result dynamically rendered by calculateAffordability() -->
+              </div>
+              <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px; margin-top: 8px;">
+                <div style="font-size: 0.68rem; color: #64748b; margin-bottom: 4px;">ON-DEVICE BANK PARSER (PRIVACY COMPLIANT):</div>
+                <div id="sim-bank-preview" style="font-size: 0.68rem; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); padding: 6px 8px; border-radius: 4px; color: #a7f3d0;">
+                  HDFC Bank: Rs 250.00 debited for Coffee. Auto-ingested via Clipboard in 1.4ms.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      initExpenseTrackerSim();
     }
   }
 
@@ -564,6 +646,108 @@ export function initCaseStudies() {
         }, 750);
       });
     }
+  }
+
+  function initExpenseTrackerSim() {
+    const presetBtns = document.querySelectorAll('.exp-preset-btn');
+    const horizonBtns = document.querySelectorAll('.exp-horizon-btn');
+    const priceInput = document.getElementById('sim-exp-price');
+    const allowanceSlider = document.getElementById('sim-allowance-slider');
+    const dispAllowance = document.getElementById('sim-disp-allowance');
+    const itemName = document.getElementById('sim-item-name');
+    const resultBox = document.getElementById('sim-exp-result');
+    const bankPreview = document.getElementById('sim-bank-preview');
+
+    let selectedDays = 1;
+    let selectedName = 'Artisan Coffee';
+
+    presetBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        presetBtns.forEach(b => b.style.borderColor = 'var(--border)');
+        btn.style.borderColor = 'var(--text-primary)';
+        const price = btn.getAttribute('data-price');
+        selectedName = btn.getAttribute('data-name');
+        itemName.textContent = selectedName;
+        priceInput.value = price;
+        updateSimulation();
+      });
+    });
+
+    horizonBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        horizonBtns.forEach(b => {
+          b.classList.remove('active');
+          b.style.borderColor = 'var(--border)';
+        });
+        btn.classList.add('active');
+        btn.style.borderColor = 'var(--text-primary)';
+        selectedDays = parseInt(btn.getAttribute('data-days'), 10) || 1;
+        updateSimulation();
+      });
+    });
+
+    if (priceInput) priceInput.addEventListener('input', updateSimulation);
+    if (allowanceSlider) {
+      allowanceSlider.addEventListener('input', () => {
+        dispAllowance.textContent = `₹${parseInt(allowanceSlider.value, 10).toLocaleString('en-IN')}/day`;
+        updateSimulation();
+      });
+    }
+
+    function updateSimulation() {
+      const price = parseFloat(priceInput.value) || 0;
+      const dailyAllowance = parseFloat(allowanceSlider.value) || 1200;
+      const dailyImpact = price / selectedDays;
+      const remainingAllowance = dailyAllowance - dailyImpact;
+      const strainRatio = dailyImpact / dailyAllowance;
+
+      let verdict = '';
+      let verdictColor = '#10b981';
+      let verdictStatus = 'SAFE PURCHASE';
+      let advice = '';
+
+      if (strainRatio <= 0.35) {
+        verdictColor = '#10b981';
+        verdictStatus = 'SAFE & FEASIBLE';
+        advice = `Minimal financial friction. This purchase consumes only ${(strainRatio * 100).toFixed(1)}% of your daily allowance buffer. Weekend EWMA allocation remains completely intact.`;
+      } else if (strainRatio <= 0.75) {
+        verdictColor = '#f59e0b';
+        verdictStatus = 'MODERATE CAUTION';
+        advice = `Tightens discretionary buffer. Amortizing over ${selectedDays} day(s) leaves ₹${Math.max(0, Math.round(remainingAllowance)).toLocaleString('en-IN')}/day for essentials. SpendCompass recommends freezing optional orders.`;
+      } else {
+        verdictColor = '#ef4444';
+        verdictStatus = 'HIGH DEFICIT STRAIN';
+        advice = `Exceeds sustainable threshold! Daily deduction of ₹${Math.round(dailyImpact).toLocaleString('en-IN')} pushes daily budget into deficit. Consider increasing amortization horizon to 14 or 30 days.`;
+      }
+
+      resultBox.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px;">
+          <span>AFFORDABILITY INDEX:</span>
+          <strong style="color:${verdictColor}; font-size: 1.05rem;">${verdictStatus}</strong>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0;">
+          <div style="background: rgba(255,255,255,0.04); padding: 6px 8px; border-radius: 4px;">
+            <div style="font-size:0.65rem; color:#64748b;">AMORTIZED DEDUCTION</div>
+            <div style="font-weight:700; color:#fff; font-size:0.9rem;">₹${Math.round(dailyImpact).toLocaleString('en-IN')}/day</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); padding: 6px 8px; border-radius: 4px;">
+            <div style="font-size:0.65rem; color:#64748b;">REMAINING BUFFER</div>
+            <div style="font-weight:700; color:${remainingAllowance >= 0 ? '#10b981' : '#ef4444'}; font-size:0.9rem;">₹${Math.round(remainingAllowance).toLocaleString('en-IN')}/day</div>
+          </div>
+        </div>
+        <div style="font-size:0.72rem; color:#cbd5e1; padding: 6px 8px; border-radius: 4px; background: rgba(0,0,0,0.3); border-left: 2px solid ${verdictColor};">
+          ${advice}
+        </div>
+      `;
+
+      if (bankPreview) {
+        bankPreview.innerHTML = `
+          HDFC Bank: Rs ${price.toLocaleString('en-IN')} spent on <strong>${selectedName}</strong>. Parsed via System Clipboard in <strong>1.4ms</strong> (Zero Cloud/SMS Permissions).
+        `;
+      }
+    }
+
+    updateSimulation();
   }
 
   openButtons.forEach(btn => {
