@@ -28,6 +28,7 @@ export function initCommandPalette(callbacks = {}) {
     { id: 'proj-convai', title: 'Case Study: Conversational AI Suite', group: 'Projects', icon: 'message-square', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('conversational_ai') },
     { id: 'proj-fake-id', title: 'Case Study: Fake ID Screening AI', group: 'Projects', icon: 'shield', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('fake_id_screening') },
     { id: 'proj-expense-tracker', title: 'Case Study: SpendCompass (Expense Tracker)', group: 'Projects', icon: 'layers', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('expense_tracker') },
+    { id: 'proj-nova-ai', title: 'Case Study: Nova AI (Android & Gemini Cloud)', group: 'Projects', icon: 'smartphone', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('nova_ai') },
 
     // Actions
     { id: 'act-resume', title: 'View & Download Resume', group: 'Actions', icon: 'file-text', action: () => callbacks.openResume && callbacks.openResume() },

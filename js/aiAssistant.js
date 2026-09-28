@@ -39,8 +39,12 @@ export function initAIAssistant(callbacks = {}) {
       answer: "SpendCompass is Naveen's production-grade, local-first daily budget & expense tracker built for Android & iOS. It features an adaptive daily allowance engine with EWMA seasonality modeling, a 'Can I Afford This?' purchase simulator, and 100% privacy-compliant bank SMS parsing without invasive permissions. Check out the GitHub repo at https://github.com/naveens005/EXPENSE-TRACKER or open its case study in the Selected Work section!"
     },
     {
+      keywords: ['nova', 'nova-ai', 'android', 'apk', 'kotlin', 'gemini', 'mobile', 'chatbot', 'streaming', 'sse'],
+      answer: "Nova AI is Naveen's standalone Android AI assistant built natively with Kotlin and Jetpack Compose. It connects directly via encrypted HTTPS to Google Gemini Cloud with real-time SSE token streaming, completely eliminating the need for companion laptops or server proxies. It features dynamic model discovery, encrypted DataStore credential storage, and a compiled production-ready APK (18 MB). Check out the GitHub repo at https://github.com/naveens005/NOVA-AI or download the APK directly from the portfolio!"
+    },
+    {
       keywords: ['projects', 'work', 'built', 'portfolio', 'creations'],
-      answer: "Naveen has built five featured projects: [1] CrowdGuard AI (Computer vision crowd risk prediction), [2] BrainRot (Behavioral AI & digital wellbeing), [3] Conversational AI Suite (Enterprise RAG & multi-agent system), [4] Fake ID Screening AI (Deep learning document forgery screening), and [5] SpendCompass (Smart local-first expense tracker & EWMA daily budget engine). Which one would you like to explore?"
+      answer: "Naveen has built six featured projects: [1] CrowdGuard AI (Computer vision crowd risk prediction), [2] BrainRot (Behavioral AI & digital wellbeing), [3] Conversational AI Suite (Enterprise RAG & multi-agent system), [4] Fake ID Screening AI (Deep learning document forgery screening), [5] SpendCompass (Smart local-first expense tracker & EWMA daily budget engine), and [6] Nova AI (Standalone Android Gemini chatbot & direct cloud streaming). Which one would you like to explore?"
     },
     {
       keywords: ['patent', 'invention', 'gesture', 'mouse', 'assistive', 'impaired', '202541055330'],

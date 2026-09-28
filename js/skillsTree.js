@@ -31,10 +31,10 @@ export function initSkillsTree() {
       id: 'genai',
       category: 'genai',
       name: 'Generative AI & LLMs',
-      sub: 'RAG & Multi-Agent Workflows',
-      desc: 'Prompt engineering, contextual vector retrieval, semantic routing, and agentic workflows.',
-      tags: ['LangChain', 'ChromaDB', 'Vector Search', 'Prompt Crafting', 'Anthropic Claude', 'OpenAI'],
-      project: 'Conversational AI Suite & NaveenAI'
+      sub: 'Cloud Streaming & Multi-Agent Workflows',
+      desc: 'Prompt engineering, direct SSE token streaming, contextual vector retrieval, and agentic workflows.',
+      tags: ['Google Gemini Cloud', 'SSE Streaming', 'LangChain', 'ChromaDB', 'Vector Search', 'Prompt Crafting', 'Anthropic Claude'],
+      project: 'Nova AI, Conversational AI Suite & NaveenAI'
     },
     {
       id: 'data',
@@ -57,11 +57,11 @@ export function initSkillsTree() {
     {
       id: 'systems',
       category: 'tools',
-      name: 'Modern Web & Systems',
-      sub: 'Full Stack & Mobile Architecture',
-      desc: 'Responsive web architectures, modular TypeScript/ES6+, mobile frameworks, REST APIs, Git versioning.',
-      tags: ['TypeScript', 'React Native', 'Python / Flask', 'JavaScript (ES6+)', 'Modern HTML5/CSS', 'Git / GitHub', 'VS Code'],
-      project: 'SpendCompass, Portfolio & Web Applications'
+      name: 'Mobile, Web & Systems',
+      sub: 'Native Android & Full Stack Architecture',
+      desc: 'Native Android mobile clients, modular TypeScript/ES6+, mobile frameworks, REST/SSE APIs, and Git versioning.',
+      tags: ['Android (Kotlin)', 'Jetpack Compose', 'TypeScript', 'React Native', 'Python / Flask', 'JavaScript (ES6+)', 'Git / GitHub'],
+      project: 'Nova AI, SpendCompass & Portfolio Web Apps'
     }
   ];
 

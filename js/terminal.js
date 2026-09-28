@@ -169,6 +169,7 @@ Positioning: AI × Design × Data × Product Thinking
 [03] <span class="terminal-out-green">Conversational AI</span> — Enterprise RAG & Multi-Agent Assistant Suite
 [04] <span class="terminal-out-green">Fake ID Screening AI</span> — Document Forgery & ELA Tamper Detection Pipeline
 [05] <span class="terminal-out-green">SpendCompass</span> — Smart Expense Tracker & Local-First Budget Engine (TypeScript, React Native)
+[06] <span class="terminal-out-green">Nova AI</span> — Standalone Android Chatbot & Direct Gemini Cloud Streaming (Kotlin, Jetpack Compose, SSE)
 `);
         break;
 
@@ -180,6 +181,17 @@ Repo: <span class="terminal-out-cyan">https://github.com/naveens005/EXPENSE-TRAC
 Stack: TypeScript, React Native, EWMA Seasonality Modeling, On-Device NLP, Local-First
 Architecture: Monorepo (engine, parser, mobile app, standalone Android APK)
 Key Feature: "Can I Afford This?" purchase simulator + 100% privacy-compliant bank SMS parsing without permissions.
+`);
+        break;
+
+      case 'nova':
+      case 'nova-ai':
+        printLine(`
+<span class="terminal-out-yellow">NOVA AI — STANDALONE ANDROID CHATBOT ⚡</span>
+Repo: <span class="terminal-out-cyan">https://github.com/naveens005/NOVA-AI</span>
+Stack: Android (Kotlin), Jetpack Compose, Google Gemini Cloud, SSE Streaming, Coroutines/Flow, Material 3
+Architecture: Clean Architecture (app, core/data, feature/chat, feature/settings, inference/cloud)
+Key Feature: 100% standalone native mobile client communicating directly with Google Gemini Cloud without companion laptop, local proxy, or desktop runtime. Features real-time SSE token streaming, dynamic model discovery, encrypted DataStore credential storage, and compiled standalone APK (18 MB).
 `);
         break;
 
