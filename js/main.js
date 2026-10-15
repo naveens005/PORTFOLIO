@@ -220,53 +220,20 @@ document.addEventListener('DOMContentLoaded', () => {
       // Universal mailto URL (triggers native Mobile Gmail app compose center on Android & iOS with all fields pre-filled)
       const mailtoUrl = `mailto:${recipient}?subject=${subjectEncoded}&body=${bodyEncoded}`;
 
-      // Android-specific Gmail app Intent (directly launches com.google.android.gm into compose screen)
-      const androidGmailIntent = `intent:#Intent;action=android.intent.action.SENDTO;data=mailto:${recipient}?subject=${subjectEncoded}&body=${bodyEncoded};package=com.google.android.gm;end`;
-
-      // iOS Gmail app URI scheme
-      const iosGmailScheme = `googlegmail:///co?to=${recipient}&subject=${subjectEncoded}&body=${bodyEncoded}`;
-
-      // Device detection
-      const isAndroid = /Android/i.test(navigator.userAgent);
-      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-      const isMobile = isAndroid || isIOS || /Mobile|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-      if (feedback) {
-        feedback.style.display = 'block';
-        feedback.style.background = 'rgba(16, 185, 129, 0.12)';
-        feedback.style.border = '1px solid rgba(16, 185, 129, 0.4)';
-        feedback.style.color = '#e2e8f0';
-        feedback.innerHTML = `
-          <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; color: #10b981; display: flex; align-items: center; gap: 8px;">
-            <span>✓</span> Redirecting to Gmail Compose Center...
-          </div>
-          <p style="margin: 0 0 10px 0; opacity: 0.9; font-size: 0.85rem; line-height: 1.4; color: #cbd5e1;">
-            Your message and details have been loaded. If the compose window didn't open automatically, select your client:
-          </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            <a href="${desktopGmailUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 6px; background: #ea4335; color: #ffffff; font-size: 0.82rem; font-weight: 600; text-decoration: none; box-shadow: 0 2px 8px rgba(234,67,53,0.3);">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
-              Desktop Gmail Web ↗
-            </a>
-            <a href="${mailtoUrl}" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); color: #ffffff; font-size: 0.82rem; font-weight: 600; text-decoration: none;">
-              📱 Mobile Gmail App
-            </a>
-            ${isAndroid ? `
-            <a href="${androidGmailIntent}" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); color: #ffffff; font-size: 0.82rem; font-weight: 600; text-decoration: none;">
-              🤖 Android Gmail Direct
-            </a>` : ''}
-            ${isIOS ? `
-            <a href="${iosGmailScheme}" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); color: #ffffff; font-size: 0.82rem; font-weight: 600; text-decoration: none;">
-              🍎 iOS Gmail App
-            </a>` : ''}
-          </div>
-        `;
-      }
-
-      showToast(`✓ Launching Gmail compose center...`);
+      // Mobile vs Desktop detection
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.matchMedia && window.matchMedia('(max-width: 768px)').matches && 'ontouchstart' in window);
 
       if (isMobile) {
-        // Mobile platform: Trigger native Gmail app compose screen
+        // Mobile platform: Directly launch native Gmail mobile application compose screen
+        if (feedback) {
+          feedback.style.display = 'block';
+          feedback.style.background = 'rgba(16, 185, 129, 0.12)';
+          feedback.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+          feedback.style.color = '#10b981';
+          feedback.innerHTML = `✓ Redirecting to Gmail app... If it didn't open automatically, <a href="${mailtoUrl}" style="color: #10b981; font-weight: 700; text-decoration: underline; margin-left: 4px;">tap here to open Gmail</a>.`;
+        }
+        showToast('✓ Opening Gmail app...');
+
         const mobileLink = document.createElement('a');
         mobileLink.href = mailtoUrl;
         document.body.appendChild(mobileLink);
@@ -275,9 +242,18 @@ document.addEventListener('DOMContentLoaded', () => {
           if (document.body.contains(mobileLink)) {
             document.body.removeChild(mobileLink);
           }
-        }, 1000);
+        }, 500);
       } else {
-        // Desktop platform: Open Desktop Gmail Web Compose in a new tab
+        // Desktop platform: Directly launch Desktop Gmail Web Compose in a new tab
+        if (feedback) {
+          feedback.style.display = 'block';
+          feedback.style.background = 'rgba(16, 185, 129, 0.12)';
+          feedback.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+          feedback.style.color = '#10b981';
+          feedback.innerHTML = `✓ Redirecting to Gmail... If it didn't open automatically, <a href="${desktopGmailUrl}" target="_blank" rel="noopener noreferrer" style="color: #10b981; font-weight: 700; text-decoration: underline; margin-left: 4px;">click here to open Gmail ↗</a>.`;
+        }
+        showToast('✓ Opening Gmail...');
+
         const gmailTab = window.open(desktopGmailUrl, '_blank');
         if (!gmailTab || gmailTab.closed || typeof gmailTab.closed === 'undefined') {
           window.location.href = desktopGmailUrl;
