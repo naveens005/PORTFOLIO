@@ -344,10 +344,10 @@ LinkedIn: <span class="terminal-out-cyan">https://linkedin.com</span>
         if (args.join(' ').toLowerCase() === 'hire naveen') {
           printLine(`
 <span class="terminal-out-green">[AUTH GRANTED] Connecting to Naveen S...</span>
-Opening your default email app to email <strong>naveens1077@gmail.com</strong>...
+Redirecting to Gmail compose for <strong>naveens1077@gmail.com</strong>...
 `);
           setTimeout(() => {
-            window.location.href = 'mailto:naveens1077@gmail.com?subject=Opportunity%20Discussion%20with%20Naveen%20S';
+            window.open('https://mail.google.com/mail/?view=cm&fs=1&to=naveens1077@gmail.com&su=Opportunity%20Discussion%20with%20Naveen%20S', '_blank');
           }, 800);
         } else {
           printLine('User naveen is in sudoers file. Incident reported.', 'terminal-out-yellow');

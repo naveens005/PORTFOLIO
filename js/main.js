@@ -209,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
       const body = encodeURIComponent(`Hi Naveen,\n\n${message}\n\n---\nSender Details:\nName: ${name}\nEmail: ${email}`);
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=naveens1077@gmail.com&su=${subject}&body=${body}`;
       const mailtoUrl = `mailto:naveens1077@gmail.com?subject=${subject}&body=${body}`;
 
       if (feedback) {
@@ -216,13 +217,16 @@ document.addEventListener('DOMContentLoaded', () => {
         feedback.style.background = 'rgba(16, 185, 129, 0.15)';
         feedback.style.border = '1px solid #10b981';
         feedback.style.color = '#10b981';
-        feedback.innerHTML = `✓ Opening your email application to send directly to <strong>naveens1077@gmail.com</strong>...`;
+        feedback.innerHTML = `✓ Redirecting to Gmail... If it didn't open automatically, <a href="${gmailUrl}" target="_blank" rel="noopener noreferrer" style="color: #10b981; font-weight: 700; text-decoration: underline; margin-left: 4px;">click here to open Gmail ↗</a> or <a href="${mailtoUrl}" style="color: var(--text-secondary); text-decoration: underline; margin-left: 6px;">open mail client</a>.`;
       }
 
-      showToast(`✓ Opening email to naveens1077@gmail.com...`);
+      showToast(`✓ Opening Gmail for naveens1077@gmail.com...`);
       
-      // Trigger native email client directly
-      window.location.href = mailtoUrl;
+      // Redirect to Gmail web compose (open new tab if allowed, else redirect current window)
+      const gmailTab = window.open(gmailUrl, '_blank');
+      if (!gmailTab || gmailTab.closed || typeof gmailTab.closed === 'undefined') {
+        window.location.href = gmailUrl;
+      }
     });
   }
 
