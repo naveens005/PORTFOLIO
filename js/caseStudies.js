@@ -12,30 +12,32 @@ export function initCaseStudies() {
   if (!modal || !modalBody) return;
 
   const caseStudiesData = {
-    crowdguard: {
+    crowdflow: {
       number: 'PROJECT 01',
-      title: 'CrowdGuard AI',
-      subtitle: 'AI-Powered Crowd Monitoring & Risk Prediction System',
-      tags: ['Computer Vision', 'YOLOv8', 'OpenCV', 'Python', 'Flask', 'Risk Analytics'],
+      title: 'CrowdFlow AI',
+      subtitle: 'Real-Time Crowd Safety Decision-Support System, Digital Twin & Mobile App',
+      tags: ['Computer Vision', 'YOLOv8', 'Digital Twin', 'Conformal Prediction', 'React Native', 'Python', 'FastAPI', 'SHA-256 Ledger'],
       image: 'assets/images/crowdguard.jpg',
-      problem: `High-density gatherings (transit hubs, stadiums, festivals) present severe risks of crowd stampedes, localized congestion bottlenecks, and emergency response delays. Traditional surveillance systems are purely reactive—human operators cannot continuously calculate spatial crowd density across multiple camera feeds in real time.`,
-      solution: `CrowdGuard AI delivers an edge-ready computer vision pipeline. Using a fine-tuned YOLOv8 model combined with OpenCV spatial preprocessing and Gaussian Kernel Density Estimation (KDE), CrowdGuard identifies human presence, computes per-square-meter density, and forecasts dangerous crowd build-ups 4 to 6 minutes before critical thresholds occur.`,
+      repoUrl: 'https://github.com/naveens005/CROWD-FLOW-AI',
+      problem: `High-density venues, stadiums, and transit terminals face severe risks of crowd stampedes, localized crushing bottlenecks, and fatal emergency egress delays. Traditional surveillance systems are purely reactive—human operators lack forward-looking physics simulations and have no "what-if" testing tools to evaluate interventions (such as opening emergency gates or reallocating stewards) before taking high-stakes actions under stress.`,
+      solution: `CrowdFlow AI delivers a production-grade, human-in-the-loop crowd safety decision-support system. Powered by YOLOv8 pedestrian tracking and optical flow kinematics, it calculates a spatial Pressure Index (Density × Velocity Turbulence) with zero-storage privacy Gaussian face blurring. It forecasts congestion 1 to 5 minutes forward using 90% conformal prediction coverage intervals, runs an interactive Digital Twin simulation ranking intervention options by lowest peak pressure, logs every operator decision to a tamper-proof SHA-256 cryptographic flight recorder, and synchronizes with a 12-screen React Native Android mobile application.`,
       architecture: [
-        'Multi-feed RTSP / Video Ingestion Layer',
-        'OpenCV Frame Normalization & Background Subtraction',
-        'YOLOv8 Real-Time Person Detection & Centroid Tracking',
-        'Spatial Kernel Density Matrix & Anomaly Vector Analysis',
-        'Flask RESTful API & WebSocket Telemetry Streaming',
-        'Modern Obsidian Risk Dashboard with Live Spatial Heatmap'
+        'Multi-Feed CCTV & Mobile IP Webcam Stream Ingestion Layer with Privacy Face Blurring',
+        'YOLOv8 Real-Time Pedestrian Tracking & Optical Flow Kinematics (Pressure = Density × Velocity Turbulence)',
+        '1, 3, & 5-Min Forward Crowd Forecasting with 90% Conformal Prediction Intervals',
+        'Forward Digital Twin Simulation Engine for Multi-Scenario Intervention Ranking ("What-If")',
+        'Human-in-the-Loop Operator Decision Gate & Tamper-Proof SHA-256 Cryptographic Audit Ledger',
+        '12-Screen React Native Android Mobile Application with JWT Role-Based Access Control'
       ],
       metrics: [
-        { val: '94.2%', lbl: 'Detection Precision' },
-        { val: '32 ms', lbl: 'Per-Frame Inference Latency' },
-        { val: '4-6 min', lbl: 'Early Warning Headroom' },
-        { val: '0 False', lbl: 'Critical Stampede Misses' }
+        { val: '90%', lbl: 'Conformal Prediction Coverage' },
+        { val: '< 35 ms', lbl: 'Real-Time Inference Latency' },
+        { val: '10-Min', lbl: 'Forward What-If Digital Twin' },
+        { val: '100%', lbl: 'SHA-256 Tamper-Proof Audit Trail' }
       ],
-      demoType: 'crowdguard_sim'
+      demoType: 'crowdflow_sim'
     },
+    crowdguard: null, // assigned below to crowdflow for backward compatibility
     brainrot: {
       number: 'PROJECT 02',
       title: 'BrainRot',
@@ -160,6 +162,7 @@ export function initCaseStudies() {
       demoType: 'nova_ai_sim'
     }
   };
+  caseStudiesData.crowdguard = caseStudiesData.crowdflow;
 
   function openCaseStudy(key) {
     const data = caseStudiesData[key];
@@ -242,20 +245,32 @@ export function initCaseStudies() {
     const container = document.getElementById('sim-playground-container');
     if (!container) return;
 
-    if (type === 'crowdguard_sim') {
+    if (type === 'crowdflow_sim' || type === 'crowdguard_sim') {
       container.innerHTML = `
         <div class="live-demo-playground">
-          <div class="demo-controls-bar">
-            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #10b981;">● SIMULATED FEED A [YOLOv8 + OpenCV]</span>
-            <div style="display: flex; gap: 12px; align-items: center; font-size: 0.8rem;">
+          <div class="demo-controls-bar" style="flex-wrap: wrap; gap: 8px;">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #10b981;">● CROWDFLOW AI [YOLOv8 + KINEMATICS + DIGITAL TWIN]</span>
+            <div style="display: flex; gap: 12px; align-items: center; font-size: 0.8rem; margin-left: auto;">
+              <button id="sim-whatif-btn" type="button" class="btn btn-secondary btn-sm" style="font-size: 0.72rem; padding: 3px 10px; border-color: rgba(99, 102, 241, 0.4); color: #818cf8; cursor: pointer;">
+                ⚡ Test What-If: Open Gate 2
+              </button>
               <label>Density: <span id="sim-density-val" style="font-family: var(--font-mono); font-weight: 700;">45%</span></label>
               <input type="range" id="sim-density-slider" min="10" max="95" value="45" style="cursor: pointer;">
             </div>
           </div>
-          <div class="sim-screen" id="crowd-canvas-screen">
-            <canvas id="sim-crowd-canvas" style="width: 100%; height: 100%;"></canvas>
-            <div id="sim-risk-badge" style="position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 99px; font-family: var(--font-mono); font-size: 0.75rem; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #10b981;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; padding: 8px 12px; background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary);">
+            <div>Pressure Index: <strong id="sim-pressure-val" style="color: #10b981;">0.32</strong></div>
+            <div>90% Conformal: <strong id="sim-conformal-val" style="color: #38bdf8;">[32, 44] p</strong></div>
+            <div>Digital Twin: <strong id="sim-twin-status" style="color: #a78bfa;">Nominal Baseline</strong></div>
+            <div>Audit Ledger: <strong id="sim-ledger-status" style="color: #34d399;">#Block 142 · Signed</strong></div>
+          </div>
+          <div class="sim-screen" id="crowd-canvas-screen" style="position: relative; min-height: 280px;">
+            <canvas id="sim-crowd-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
+            <div id="sim-risk-badge" style="position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 99px; font-family: var(--font-mono); font-size: 0.75rem; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #10b981; backdrop-filter: blur(4px);">
               STATUS: NOMINAL (LOW RISK)
+            </div>
+            <div id="sim-whatif-badge" style="display: none; position: absolute; bottom: 12px; left: 12px; padding: 4px 10px; border-radius: 99px; font-family: var(--font-mono); font-size: 0.72rem; background: rgba(99, 102, 241, 0.25); border: 1px solid #818cf8; color: #c7d2fe; backdrop-filter: blur(4px);">
+              ⚡ WHAT-IF RELIEF ACTIVE: Gate 2 Opened (-42% Simulated Pressure)
             </div>
           </div>
         </div>
@@ -516,22 +531,32 @@ export function initCaseStudies() {
     const slider = document.getElementById('sim-density-slider');
     const valText = document.getElementById('sim-density-val');
     const riskBadge = document.getElementById('sim-risk-badge');
+    const whatIfBtn = document.getElementById('sim-whatif-btn');
+    const whatIfBadge = document.getElementById('sim-whatif-badge');
+    const pressureVal = document.getElementById('sim-pressure-val');
+    const conformalVal = document.getElementById('sim-conformal-val');
+    const twinStatus = document.getElementById('sim-twin-status');
+    const ledgerStatus = document.getElementById('sim-ledger-status');
     if (!canvas || !slider) return;
 
     const ctx = canvas.getContext('2d');
     canvas.width = canvas.parentElement.clientWidth;
-    canvas.height = canvas.parentElement.clientHeight;
+    canvas.height = canvas.parentElement.clientHeight || 280;
 
     let points = [];
+    let isWhatIfActive = false;
+    let blockIndex = 142;
+
     function updatePoints(count) {
       points = [];
       for (let i = 0; i < count; i++) {
         points.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 1.5,
-          vy: (Math.random() - 0.5) * 1.5,
-          confidence: (Math.random() * 0.2 + 0.8).toFixed(2)
+          x: Math.random() * (canvas.width - 40) + 20,
+          y: Math.random() * (canvas.height - 40) + 20,
+          vx: (Math.random() - 0.5) * 1.6,
+          vy: (Math.random() - 0.5) * 1.6,
+          confidence: (Math.random() * 0.15 + 0.84).toFixed(2),
+          trackId: i + 101
         });
       }
     }
@@ -539,17 +564,31 @@ export function initCaseStudies() {
     let density = parseInt(slider.value, 10);
     updatePoints(Math.floor(density * 0.8));
 
-    slider.addEventListener('input', (e) => {
-      density = parseInt(e.target.value, 10);
-      valText.textContent = `${density}%`;
-      updatePoints(Math.floor(density * 0.8));
+    function syncTelemetry() {
+      const entityCount = points.length;
+      const effectiveDensity = isWhatIfActive ? Math.max(12, Math.floor(density * 0.58)) : density;
+      const pressure = ((effectiveDensity / 100) * (isWhatIfActive ? 0.45 : 0.92)).toFixed(2);
+      const confLower = Math.max(4, Math.floor(entityCount * 0.85));
+      const confUpper = Math.ceil(entityCount * 1.15);
 
-      if (density < 40) {
+      if (pressureVal) {
+        pressureVal.textContent = pressure;
+        pressureVal.style.color = pressure > 0.7 ? '#ef4444' : (pressure > 0.4 ? '#f59e0b' : '#10b981');
+      }
+      if (conformalVal) {
+        conformalVal.textContent = `[${confLower}, ${confUpper}] p`;
+      }
+      if (twinStatus) {
+        twinStatus.textContent = isWhatIfActive ? 'Gate 2 Egress (-42% load)' : 'Nominal Baseline';
+        twinStatus.style.color = isWhatIfActive ? '#818cf8' : '#a78bfa';
+      }
+
+      if (effectiveDensity < 40) {
         riskBadge.style.background = 'rgba(16, 185, 129, 0.2)';
         riskBadge.style.borderColor = '#10b981';
         riskBadge.style.color = '#10b981';
         riskBadge.textContent = 'STATUS: NOMINAL (LOW RISK)';
-      } else if (density < 75) {
+      } else if (effectiveDensity < 75) {
         riskBadge.style.background = 'rgba(245, 158, 11, 0.2)';
         riskBadge.style.borderColor = '#f59e0b';
         riskBadge.style.color = '#f59e0b';
@@ -558,41 +597,111 @@ export function initCaseStudies() {
         riskBadge.style.background = 'rgba(239, 68, 68, 0.2)';
         riskBadge.style.borderColor = '#ef4444';
         riskBadge.style.color = '#ef4444';
-        riskBadge.textContent = 'STATUS: CRITICAL RISK DETECTED — ALERT DISPATCHED';
+        riskBadge.textContent = 'STATUS: CRITICAL PRESSURE FORECASTED';
       }
+    }
+
+    slider.addEventListener('input', (e) => {
+      density = parseInt(e.target.value, 10);
+      valText.textContent = `${density}%`;
+      updatePoints(Math.floor(density * 0.8));
+      syncTelemetry();
     });
 
+    if (whatIfBtn) {
+      whatIfBtn.addEventListener('click', () => {
+        isWhatIfActive = !isWhatIfActive;
+        blockIndex++;
+        if (isWhatIfActive) {
+          whatIfBtn.innerHTML = '✓ What-If Active: Gate 2 Open';
+          whatIfBtn.style.background = 'rgba(99, 102, 241, 0.2)';
+          whatIfBtn.style.borderColor = '#6366f1';
+          if (whatIfBadge) whatIfBadge.style.display = 'block';
+          if (ledgerStatus) ledgerStatus.innerHTML = `#Block ${blockIndex} · Gate 2 Approved`;
+        } else {
+          whatIfBtn.innerHTML = '⚡ Test What-If: Open Gate 2';
+          whatIfBtn.style.background = 'transparent';
+          whatIfBtn.style.borderColor = 'rgba(99, 102, 241, 0.4)';
+          if (whatIfBadge) whatIfBadge.style.display = 'none';
+          if (ledgerStatus) ledgerStatus.innerHTML = `#Block ${blockIndex} · Baseline Signed`;
+        }
+        syncTelemetry();
+      });
+    }
+
+    syncTelemetry();
+
     function draw() {
-      ctx.fillStyle = '#0b0b10';
+      ctx.fillStyle = '#0a0a0f';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw subtle grid
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+      // Draw subtle corridor grid
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
       ctx.lineWidth = 1;
-      for (let x = 0; x < canvas.width; x += 40) {
+      for (let x = 0; x < canvas.width; x += 36) {
         ctx.beginPath();
         ctx.moveTo(x, 0);
         ctx.lineTo(x, canvas.height);
         ctx.stroke();
       }
 
-      // Draw bounding boxes
+      // Draw Gate 2 exit door zone on the right
+      if (isWhatIfActive) {
+        ctx.fillStyle = 'rgba(99, 102, 241, 0.12)';
+        ctx.fillRect(canvas.width - 60, canvas.height * 0.25, 60, canvas.height * 0.5);
+        ctx.strokeStyle = '#818cf8';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 4]);
+        ctx.strokeRect(canvas.width - 60, canvas.height * 0.25, 59, canvas.height * 0.5);
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#c7d2fe';
+        ctx.font = '10px monospace';
+        ctx.fillText('GATE 2 [OPEN]', canvas.width - 55, canvas.height * 0.25 - 6);
+      }
+
+      // Draw entities with optical flow and privacy face blur
+      const effectiveDensity = isWhatIfActive ? Math.max(12, Math.floor(density * 0.58)) : density;
+      const boxColor = effectiveDensity > 75 ? '#ef4444' : (effectiveDensity > 40 ? '#f59e0b' : '#10b981');
+
       points.forEach(p => {
+        if (isWhatIfActive) {
+          // Flow gently toward right-side relief gate
+          p.vx += 0.035;
+          if (p.x > canvas.width - 15) {
+            p.x = 15;
+            p.y = Math.random() * (canvas.height - 40) + 20;
+          }
+        }
+
         p.x += p.vx;
         p.y += p.vy;
-        if (p.x < 10) p.x = canvas.width - 10;
-        if (p.x > canvas.width - 10) p.x = 10;
-        if (p.y < 10) p.y = canvas.height - 10;
-        if (p.y > canvas.height - 10) p.y = 10;
 
-        const boxColor = density > 75 ? '#ef4444' : (density > 40 ? '#f59e0b' : '#10b981');
+        if (p.x < 12) { p.x = 12; p.vx *= -1; }
+        if (p.x > canvas.width - 12) { p.x = canvas.width - 12; p.vx *= -1; }
+        if (p.y < 12) { p.y = 12; p.vy *= -1; }
+        if (p.y > canvas.height - 12) { p.y = canvas.height - 12; p.vy *= -1; }
+
+        // Optical flow velocity vector line
+        ctx.strokeStyle = isWhatIfActive ? '#818cf8' : 'rgba(255, 255, 255, 0.25)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p.x + p.vx * 10, p.y + p.vy * 10);
+        ctx.stroke();
+
+        // Person bounding box
         ctx.strokeStyle = boxColor;
         ctx.lineWidth = 1.5;
-        ctx.strokeRect(p.x - 12, p.y - 18, 24, 36);
+        ctx.strokeRect(p.x - 11, p.y - 17, 22, 34);
 
+        // Gaussian Privacy Face Blur box representation
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.18)';
+        ctx.fillRect(p.x - 7, p.y - 15, 14, 10);
+
+        // Label
         ctx.fillStyle = boxColor;
-        ctx.font = '9px monospace';
-        ctx.fillText(`person ${p.confidence}`, p.x - 12, p.y - 22);
+        ctx.font = '8.5px monospace';
+        ctx.fillText(`ID:${p.trackId}`, p.x - 11, p.y - 20);
       });
 
       requestAnimationFrame(draw);

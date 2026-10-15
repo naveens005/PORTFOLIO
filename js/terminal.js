@@ -128,7 +128,7 @@ export function initTerminal() {
   <span class="terminal-out-green">curl resume</span>  View official resume sheet
 
 <span class="terminal-out-cyan">[Interactive Tools & Games]</span>
-  <span class="terminal-out-green">ai predict</span>   Run live CrowdGuard AI density inference simulation
+  <span class="terminal-out-green">ai predict</span>   Run live CrowdFlow AI density & digital twin simulation
   <span class="terminal-out-green">speedtest</span>    Run real-time bandwidth & latency benchmark
   <span class="terminal-out-green">quiz</span>         Start interactive 3-question AI/UX challenge
   <span class="terminal-out-green">matrix</span>       Matrix digital rain animation
@@ -164,12 +164,24 @@ Positioning: AI × Design × Data × Product Thinking
 
       case 'projects':
         printLine(`
-[01] <span class="terminal-out-green">CrowdGuard AI</span> — Computer Vision & Risk Prediction (YOLOv8, OpenCV, Flask)
+[01] <span class="terminal-out-green">CrowdFlow AI</span> — Real-Time Crowd Safety Decision Support, Digital Twin & Mobile App (YOLOv8, Conformal Prediction, React Native, FastAPI)
 [02] <span class="terminal-out-green">BrainRot</span> — Digital Wellbeing & Behavioral Analytics Platform
 [03] <span class="terminal-out-green">Conversational AI</span> — Enterprise RAG & Multi-Agent Assistant Suite
 [04] <span class="terminal-out-green">Fake ID Screening AI</span> — Document Forgery & ELA Tamper Detection Pipeline
 [05] <span class="terminal-out-green">SpendCompass</span> — Smart Expense Tracker & Local-First Budget Engine (TypeScript, React Native)
 [06] <span class="terminal-out-green">Nova AI</span> — Standalone Android Chatbot & Direct Gemini Cloud Streaming (Kotlin, Jetpack Compose, SSE)
+`);
+        break;
+
+      case 'crowdflow':
+      case 'crowdguard':
+        printLine(`
+<span class="terminal-out-yellow">CROWDFLOW AI — REAL-TIME CROWD SAFETY DECISION SUPPORT</span>
+Repo: <span class="terminal-out-cyan">https://github.com/naveens005/CROWD-FLOW-AI</span>
+Stack: Python, FastAPI, YOLOv8, Optical Flow Kinematics, Digital Twin, Conformal Prediction, React Native
+Architecture: Edge Vision pipeline with Gaussian face blurring + forward Digital Twin simulator + SHA-256 cryptographic audit ledger + 12-screen React Native Android mobile client.
+Built For: SEVA First Innovation Challenge
+Key Metrics: 90% Conformal Coverage Interval · &lt; 35 ms Edge Inference Latency · 10-Min Forward What-If Digital Twin
 `);
         break;
 
@@ -376,8 +388,8 @@ Opening your default email app to email <strong>naveens1077@gmail.com</strong>..
 <span class="terminal-out-green">✓ INFERENCE COMPLETE</span>
   Pedestrian Count: <strong>${count} entities</strong>
   Congestion Density: <strong>${riskPct}%</strong>
-  Bottleneck Status: <span class="terminal-out-red">CRITICAL RISK FORECASTED</span>
-  Action: <span class="terminal-out-yellow">CrowdGuard automated reroute alert dispatched</span>
+  Bottleneck Status: <span class="terminal-out-red">CRITICAL RISK FORECASTED (90% Conformal Interval)</span>
+  Action: <span class="terminal-out-yellow">CrowdFlow AI: Digital Twin What-If evaluated (Open Gate 2 recommended) · SHA-256 Ledger logged</span>
 `);
     }, 450);
   }

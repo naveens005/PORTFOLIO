@@ -19,8 +19,8 @@ export function initAIAssistant(callbacks = {}) {
       answer: "Naveen S is a B.Tech Artificial Intelligence & Data Science builder (2023 — 2027) and UI/UX Designer from Chennai, India (Peri Institute of Technology, CGPA 8.0). He specializes in bridging complex AI pipelines (Computer Vision, LLMs, Machine Learning) with modern, high-polish user experiences."
     },
     {
-      keywords: ['crowdguard', 'crowd', 'yolo', 'opencv', 'vision', 'surveillance'],
-      answer: "CrowdGuard AI is Naveen's flagship Computer Vision & risk monitoring platform built with YOLOv8, OpenCV, and Flask. It detects crowd densities, computes risk heatmaps, and forecasts congestion bottlenecks in real time. Would you like to view the case study?"
+      keywords: ['crowdflow', 'crowdflow ai', 'crowdguard', 'crowd', 'flow', 'yolo', 'opencv', 'vision', 'surveillance', 'digital twin', 'conformal', 'pressure'],
+      answer: "CrowdFlow AI is Naveen's flagship Computer Vision & crowd safety decision-support system built for the SEVA First Innovation Challenge. It features real-time YOLOv8 pedestrian tracking, optical flow kinematics (Pressure = Density × Velocity Turbulence), 1-to-5 minute conformal risk forecasting, forward digital twin 'what-if' simulations, tamper-proof SHA-256 cryptographic audit logging, and a 12-screen React Native Android mobile app. Check it out on GitHub: https://github.com/naveens005/CROWD-FLOW-AI or open the interactive case study!"
     },
     {
       keywords: ['brainrot', 'wellbeing', 'behavior', 'screentime', 'cognitive'],
@@ -44,7 +44,7 @@ export function initAIAssistant(callbacks = {}) {
     },
     {
       keywords: ['projects', 'work', 'built', 'portfolio', 'creations'],
-      answer: "Naveen has built six featured projects: [1] CrowdGuard AI (Computer vision crowd risk prediction), [2] BrainRot (Behavioral AI & digital wellbeing), [3] Conversational AI Suite (Enterprise RAG & multi-agent system), [4] Fake ID Screening AI (Deep learning document forgery screening), [5] SpendCompass (Smart local-first expense tracker & EWMA daily budget engine), and [6] Nova AI (Standalone Android Gemini chatbot & direct cloud streaming). Which one would you like to explore?"
+      answer: "Naveen has built six featured projects: [1] CrowdFlow AI (Real-time crowd safety decision support, digital twin & mobile app), [2] BrainRot (Behavioral AI & digital wellbeing), [3] Conversational AI Suite (Enterprise RAG & multi-agent system), [4] Fake ID Screening AI (Deep learning document forgery screening), [5] SpendCompass (Smart local-first expense tracker & EWMA daily budget engine), and [6] Nova AI (Standalone Android Gemini chatbot & direct cloud streaming). Which one would you like to explore?"
     },
     {
       keywords: ['patent', 'invention', 'gesture', 'mouse', 'assistive', 'impaired', '202541055330'],
@@ -136,7 +136,7 @@ export function initAIAssistant(callbacks = {}) {
       if (bestMatch && maxScore > 0) {
         addBotMessage(bestMatch.answer);
       } else {
-        addBotMessage("I specialize in answering questions regarding Naveen's AI work, CrowdGuard AI, his patent on gesture mouse control, skills in Python/Figma, and career background. Feel free to click any suggestion chip or email him directly at naveens1077@gmail.com!");
+        addBotMessage("I specialize in answering questions regarding Naveen's AI work, CrowdFlow AI, his patent on gesture mouse control, skills in Python/Figma, and career background. Feel free to click any suggestion chip or email him directly at naveens1077@gmail.com!");
       }
     }, 450);
   }

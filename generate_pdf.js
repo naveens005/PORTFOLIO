@@ -92,17 +92,17 @@ addSectionHeader('Featured Projects');
 doc.setFont('helvetica', 'bold');
 doc.setFontSize(9);
 doc.setTextColor(30, 30, 30);
-doc.text('CrowdGuard AI — AI Crowd Risk & Congestion Monitoring', margin, y);
+doc.text('CrowdFlow AI — Crowd Safety Decision-Support System & Digital Twin', margin, y);
 y += 3.5;
 doc.setFont('helvetica', 'italic');
 doc.setFontSize(8);
 doc.setTextColor(100, 100, 110);
-doc.text('Tech: Python, YOLOv8, OpenCV, Flask, Gaussian KDE Risk Heatmaps', margin, y);
+doc.text('Tech: Python, FastAPI, YOLOv8, OpenCV, Digital Twin, Conformal Prediction, React Native', margin, y);
 y += 3.5;
 doc.setFont('helvetica', 'normal');
 doc.setFontSize(8);
 doc.setTextColor(70, 70, 80);
-doc.text('Real-time crowd anomaly detection system forecasting stampede bottlenecks 4-6 minutes early.', margin, y);
+doc.text('Real-time crowd safety decision system with optical flow kinematics, digital twin & SHA-256 ledger.', margin, y);
 
 // Project 2
 y += 4.5;
