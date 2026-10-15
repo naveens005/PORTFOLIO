@@ -165,16 +165,16 @@ Positioning: AI × Design × Data × Product Thinking
       case 'projects':
         printLine(`
 [01] <span class="terminal-out-green">CrowdFlow AI</span> — Real-Time Crowd Safety Decision Support, Digital Twin & Mobile App (YOLOv8, Conformal Prediction, React Native, FastAPI)
-[02] <span class="terminal-out-green">BrainRot</span> — Digital Wellbeing & Behavioral Analytics Platform
-[03] <span class="terminal-out-green">Conversational AI</span> — Enterprise RAG & Multi-Agent Assistant Suite
-[04] <span class="terminal-out-green">Fake ID Screening AI</span> — Document Forgery & ELA Tamper Detection Pipeline
-[05] <span class="terminal-out-green">SpendCompass</span> — Smart Expense Tracker & Local-First Budget Engine (TypeScript, React Native)
-[06] <span class="terminal-out-green">Nova AI</span> — Standalone Android Chatbot & Direct Gemini Cloud Streaming (Kotlin, Jetpack Compose, SSE)
+[02] <span class="terminal-out-green">CrowdGuard 3.0</span> — Multi-Camera Surveillance & Automated Twilio SMS Dispatch (YOLOv8, OpenCV, Flask, Socket.IO)
+[03] <span class="terminal-out-green">BrainRot</span> — Digital Wellbeing & Behavioral Analytics Platform
+[04] <span class="terminal-out-green">Conversational AI</span> — Enterprise RAG & Multi-Agent Assistant Suite
+[05] <span class="terminal-out-green">Fake ID Screening AI</span> — Document Forgery & ELA Tamper Detection Pipeline
+[06] <span class="terminal-out-green">SpendCompass</span> — Smart Expense Tracker & Local-First Budget Engine (TypeScript, React Native)
+[07] <span class="terminal-out-green">Nova AI</span> — Standalone Android Chatbot & Direct Gemini Cloud Streaming (Kotlin, Jetpack Compose, SSE)
 `);
         break;
 
       case 'crowdflow':
-      case 'crowdguard':
         printLine(`
 <span class="terminal-out-yellow">CROWDFLOW AI — REAL-TIME CROWD SAFETY DECISION SUPPORT</span>
 Repo: <span class="terminal-out-cyan">https://github.com/naveens005/CROWD-FLOW-AI</span>
@@ -182,6 +182,16 @@ Stack: Python, FastAPI, YOLOv8, Optical Flow Kinematics, Digital Twin, Conformal
 Architecture: Edge Vision pipeline with Gaussian face blurring + forward Digital Twin simulator + SHA-256 cryptographic audit ledger + 12-screen React Native Android mobile client.
 Built For: SEVA First Innovation Challenge
 Key Metrics: 90% Conformal Coverage Interval · &lt; 35 ms Edge Inference Latency · 10-Min Forward What-If Digital Twin
+`);
+        break;
+
+      case 'crowdguard':
+        printLine(`
+<span class="terminal-out-yellow">CROWDGUARD 3.0 — MULTI-CAMERA CROWD MONITORING & SMS DISPATCH</span>
+Repo: <span class="terminal-out-cyan">https://github.com/naveens005/crowdguard-backend</span>
+Stack: Python, Flask, YOLOv8, OpenCV, Socket.IO, Twilio SMS, SQLite
+Architecture: Multi-camera RTSP ingestion layer + dynamic 3x3 zone density grid + automated Twilio emergency SMS alert routing + GPS on-duty shift roster dispatch ranking + offline-resilient sync queues.
+Key Metrics: 94.2% Detection Precision · 32 ms Per-Camera Inference · &lt; 2.5s Twilio Alert Dispatch
 `);
         break;
 

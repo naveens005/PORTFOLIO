@@ -16,7 +16,7 @@ export function initSkillsTree() {
       sub: 'Object Detection & Spatial AI',
       desc: 'Real-time object detection, spatial tracking, feature extraction, and edge inference.',
       tags: ['YOLOv8', 'OpenCV', 'Image Processing', 'MediaPipe', 'Bounding Boxes', 'Heatmaps'],
-      project: 'CrowdFlow AI & Assistive Gesture Patent'
+      project: 'CrowdFlow AI, CrowdGuard 3.0 & Gesture Patent'
     },
     {
       id: 'ml',

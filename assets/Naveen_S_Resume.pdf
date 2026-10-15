@@ -10,7 +10,7 @@
 endobj
 4 0 obj
 <<
-/Length 6827
+/Length 6864
 >>
 stream
 0.5670000000000001 w
@@ -145,49 +145,49 @@ BT
 9.1999999999999993 TL
 0.275 0.275 0.314 rg
 39.6850393700787407 592.4411811023621794 Td
-(Real-time crowd safety decision system with optical flow kinematics, digital twin & SHA-256 ledger.) Tj
+(Real-time crowd safety platform with optical flow kinematics, forward digital twin & SHA-256 ledger.) Tj
 ET
 BT
 /F2 9 Tf
 10.3499999999999996 TL
 0.118 g
 39.6850393700787407 579.6852755905511003 Td
-(BrainRot — Behavioral AI & Digital Wellbeing Platform) Tj
+(CrowdGuard 3.0 — Multi-Camera Crowd Detection & SMS Alert Dispatch) Tj
 ET
 BT
 /F3 8 Tf
 9.1999999999999993 TL
 0.392 0.392 0.431 rg
 39.6850393700787407 569.7640157480313974 Td
-(Tech: Scikit-Learn, Time Series Analytics, Figma Design System) Tj
+(Tech: Python, Flask, YOLOv8, OpenCV, Socket.IO, Twilio SMS, SQLite) Tj
 ET
 BT
 /F1 8 Tf
 9.1999999999999993 TL
 0.275 0.275 0.314 rg
 39.6850393700787407 559.8427559055116944 Td
-(Intelligent attention-decay and cognitive-load modeling with ambient mindfulness interventions.) Tj
+(Multi-camera surveillance platform with dynamic zone density grids and automated Twilio SMS alert routing.) Tj
 ET
 BT
 /F2 9 Tf
 10.3499999999999996 TL
 0.118 g
 39.6850393700787407 547.086850393700729 Td
-(Conversational AI Suite — Enterprise RAG & Multi-Agent Assistant) Tj
+(BrainRot — Behavioral AI & Digital Wellbeing Platform) Tj
 ET
 BT
 /F3 8 Tf
 9.1999999999999993 TL
 0.392 0.392 0.431 rg
 39.6850393700787407 537.1655905511811397 Td
-(Tech: LangChain, ChromaDB, FastAPI, Vector Search) Tj
+(Tech: Scikit-Learn, Time Series Analytics, Figma Design System) Tj
 ET
 BT
 /F1 8 Tf
 9.1999999999999993 TL
 0.275 0.275 0.314 rg
 39.6850393700787407 527.2443307086614368 Td
-(Multi-agent decision trees and semantic retrieval with 92% factual accuracy in domain QA.) Tj
+(Intelligent attention-decay and cognitive-load modeling with ambient mindfulness interventions.) Tj
 ET
 BT
 /F2 10.5 Tf
@@ -481,7 +481,7 @@ endobj
 19 0 obj
 <<
 /Producer (jsPDF 4.2.1)
-/CreationDate (D:20261015140812+05'30')
+/CreationDate (D:20261015144655+05'30')
 >>
 endobj
 20 0 obj
@@ -495,33 +495,33 @@ endobj
 xref
 0 21
 0000000000 65535 f 
-0000007031 00000 n 
-0000008848 00000 n 
+0000007068 00000 n 
+0000008885 00000 n 
 0000000015 00000 n 
 0000000152 00000 n 
-0000007088 00000 n 
-0000007213 00000 n 
-0000007343 00000 n 
-0000007476 00000 n 
-0000007613 00000 n 
-0000007736 00000 n 
-0000007865 00000 n 
-0000007997 00000 n 
-0000008133 00000 n 
-0000008261 00000 n 
-0000008388 00000 n 
-0000008517 00000 n 
-0000008650 00000 n 
-0000008752 00000 n 
-0000009096 00000 n 
-0000009182 00000 n 
+0000007125 00000 n 
+0000007250 00000 n 
+0000007380 00000 n 
+0000007513 00000 n 
+0000007650 00000 n 
+0000007773 00000 n 
+0000007902 00000 n 
+0000008034 00000 n 
+0000008170 00000 n 
+0000008298 00000 n 
+0000008425 00000 n 
+0000008554 00000 n 
+0000008687 00000 n 
+0000008789 00000 n 
+0000009133 00000 n 
+0000009219 00000 n 
 trailer
 <<
 /Size 21
 /Root 20 0 R
 /Info 19 0 R
-/ID [ <D8A750832F1F9C7E80665EF2DDE1E22E> <D8A750832F1F9C7E80665EF2DDE1E22E> ]
+/ID [ <13E0828606CE2B10E98F215B77FDEDE5> <13E0828606CE2B10E98F215B77FDEDE5> ]
 >>
 startxref
-9286
+9323
 %%EOF

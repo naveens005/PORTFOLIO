@@ -17,7 +17,7 @@ export function initCaseStudies() {
       title: 'CrowdFlow AI',
       subtitle: 'Real-Time Crowd Safety Decision-Support System, Digital Twin & Mobile App',
       tags: ['Computer Vision', 'YOLOv8', 'Digital Twin', 'Conformal Prediction', 'React Native', 'Python', 'FastAPI', 'SHA-256 Ledger'],
-      image: 'assets/images/crowdguard.jpg',
+      image: 'assets/images/crowdflow_ai.jpg',
       repoUrl: 'https://github.com/naveens005/CROWD-FLOW-AI',
       problem: `High-density venues, stadiums, and transit terminals face severe risks of crowd stampedes, localized crushing bottlenecks, and fatal emergency egress delays. Traditional surveillance systems are purely reactive—human operators lack forward-looking physics simulations and have no "what-if" testing tools to evaluate interventions (such as opening emergency gates or reallocating stewards) before taking high-stakes actions under stress.`,
       solution: `CrowdFlow AI delivers a production-grade, human-in-the-loop crowd safety decision-support system. Powered by YOLOv8 pedestrian tracking and optical flow kinematics, it calculates a spatial Pressure Index (Density × Velocity Turbulence) with zero-storage privacy Gaussian face blurring. It forecasts congestion 1 to 5 minutes forward using 90% conformal prediction coverage intervals, runs an interactive Digital Twin simulation ranking intervention options by lowest peak pressure, logs every operator decision to a tamper-proof SHA-256 cryptographic flight recorder, and synchronizes with a 12-screen React Native Android mobile application.`,
@@ -37,9 +37,33 @@ export function initCaseStudies() {
       ],
       demoType: 'crowdflow_sim'
     },
-    crowdguard: null, // assigned below to crowdflow for backward compatibility
-    brainrot: {
+    crowdguard: {
       number: 'PROJECT 02',
+      title: 'CrowdGuard 3.0',
+      subtitle: 'Real-Time Multi-Camera Crowd Detection & Automated SMS Risk Dispatch',
+      tags: ['Computer Vision', 'YOLOv8', 'OpenCV', 'Python', 'Flask', 'Socket.IO', 'Twilio SMS', 'SQLite'],
+      image: 'assets/images/crowdguard.jpg',
+      repoUrl: 'https://github.com/naveens005/crowdguard-backend',
+      problem: `High-density gatherings (transit hubs, stadiums, festivals) present severe risks of crowd stampedes, localized congestion bottlenecks, and emergency response delays. Traditional surveillance systems are purely reactive—human operators cannot continuously calculate spatial crowd density across multiple camera feeds in real time, and security personnel lack automated dispatch routing when crush limits are crossed.`,
+      solution: `CrowdGuard 3.0 deploys an edge-ready multi-camera computer vision pipeline. Using a fine-tuned YOLOv8 model combined with OpenCV spatial preprocessing and dynamic zone-density grids, CrowdGuard identifies human presence, computes per-square-meter density, and forecasts dangerous crowd build-ups 4 to 6 minutes early. When risk thresholds are crossed, it automatically dispatches emergency SMS alerts via Twilio to the nearest on-duty officials ranked by their active GPS shift roster, backed by offline-resilient batch sync queues.`,
+      architecture: [
+        'Multi-Camera Ingestion Layer with Per-Camera Device Tokens (JWT)',
+        'OpenCV Frame Normalization & Background Subtraction',
+        'YOLOv8 Real-Time Person Detection & Centroid Tracking',
+        'Spatial Zone Density Grid Matrix & Anomaly Vector Analysis',
+        'Automated Twilio SMS Alert Engine with Emergency Cooldown Timers',
+        'Flask RESTful API, WebSocket Telemetry & Offline-Resilient Sync Queue'
+      ],
+      metrics: [
+        { val: '94.2%', lbl: 'Detection Precision' },
+        { val: '32 ms', lbl: 'Per-Frame Inference Latency' },
+        { val: '< 2.5s', lbl: 'Automated SMS Alert Dispatch' },
+        { val: '0 False', lbl: 'Critical Stampede Misses' }
+      ],
+      demoType: 'crowdguard_sim'
+    },
+    brainrot: {
+      number: 'PROJECT 03',
       title: 'BrainRot',
       subtitle: 'Intelligent Digital Wellbeing & Behavioral Analytics Platform',
       tags: ['AI Analytics', 'Behavior Tracking', 'Cognitive Load', 'Product Design', 'Figma'],
@@ -62,7 +86,7 @@ export function initCaseStudies() {
       demoType: 'brainrot_sim'
     },
     conversational_ai: {
-      number: 'PROJECT 03',
+      number: 'PROJECT 04',
       title: 'Conversational AI Suite',
       subtitle: 'Enterprise Retrieval-Augmented Generation (RAG) & Multi-Agent Assistant Suite',
       tags: ['LLMs', 'LangChain', 'RAG Architecture', 'ChromaDB', 'Python', 'FastAPI'],
@@ -85,7 +109,7 @@ export function initCaseStudies() {
       demoType: 'convai_sim'
     },
     fake_id_screening: {
-      number: 'PROJECT 04',
+      number: 'PROJECT 05',
       title: 'AI-Based Fake Identity Document Screening',
       subtitle: 'Deep Learning & Computer Vision System for Document Forgery & Digital Tampering Detection',
       tags: ['Computer Vision', 'PyTorch', 'OpenCV', 'Error Level Analysis', 'OCR', 'Python', 'Flask'],
@@ -110,7 +134,7 @@ export function initCaseStudies() {
       demoType: 'fake_id_sim'
     },
     expense_tracker: {
-      number: 'PROJECT 05',
+      number: 'PROJECT 06',
       title: 'SpendCompass — Smart Expense Tracker',
       subtitle: 'Local-First, Privacy-First Daily Budget Expense Tracker & Adaptive Allowance Engine',
       tags: ['TypeScript', 'React Native', 'Financial Modeling', 'EWMA Seasonality', 'On-Device NLP', 'Local-First', 'Android APK'],
@@ -135,7 +159,7 @@ export function initCaseStudies() {
       demoType: 'expense_tracker_sim'
     },
     nova_ai: {
-      number: 'PROJECT 06',
+      number: 'PROJECT 07',
       title: 'Nova AI — Standalone Android Chatbot',
       subtitle: 'Native Android Gemini Assistant with Direct Cloud Streaming & Zero-Proxy Runtime',
       tags: ['Android (Kotlin)', 'Jetpack Compose', 'Google Gemini Cloud', 'SSE Streaming', 'Coroutines / Flow', 'Material 3', 'DataStore', 'Android APK'],
@@ -162,7 +186,6 @@ export function initCaseStudies() {
       demoType: 'nova_ai_sim'
     }
   };
-  caseStudiesData.crowdguard = caseStudiesData.crowdflow;
 
   function openCaseStudy(key) {
     const data = caseStudiesData[key];
@@ -245,7 +268,7 @@ export function initCaseStudies() {
     const container = document.getElementById('sim-playground-container');
     if (!container) return;
 
-    if (type === 'crowdflow_sim' || type === 'crowdguard_sim') {
+    if (type === 'crowdflow_sim') {
       container.innerHTML = `
         <div class="live-demo-playground">
           <div class="demo-controls-bar" style="flex-wrap: wrap; gap: 8px;">
@@ -275,7 +298,37 @@ export function initCaseStudies() {
           </div>
         </div>
       `;
-      initCrowdSim();
+      initCrowdFlowSim();
+    } else if (type === 'crowdguard_sim') {
+      container.innerHTML = `
+        <div class="live-demo-playground">
+          <div class="demo-controls-bar" style="flex-wrap: wrap; gap: 8px;">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #10b981;">● CROWDGUARD 3.0 [MULTI-CAMERA + ZONE GRID + TWILIO SMS]</span>
+            <div style="display: flex; gap: 8px; align-items: center; font-size: 0.8rem; margin-left: auto;">
+              <button id="cg-cam1-btn" type="button" class="btn btn-secondary btn-sm" style="font-size: 0.72rem; padding: 2px 8px; border-color: #10b981; color: #10b981; cursor: pointer;">CAM-01 (Gate 1)</button>
+              <button id="cg-cam2-btn" type="button" class="btn btn-secondary btn-sm" style="font-size: 0.72rem; padding: 2px 8px; cursor: pointer;">CAM-02 (Concourse)</button>
+              <label style="margin-left: 6px;">Density: <span id="cg-density-val" style="font-family: var(--font-mono); font-weight: 700;">45%</span></label>
+              <input type="range" id="cg-density-slider" min="15" max="95" value="45" style="cursor: pointer; width: 80px;">
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; padding: 8px 12px; background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary);">
+            <div>Active Feed: <strong id="cg-feed-val" style="color: #38bdf8;">CAM-01 · Gate 1</strong></div>
+            <div>Zone Grid: <strong style="color: #a78bfa;">3x3 Matrix Active</strong></div>
+            <div>Roster Target: <strong id="cg-officer-val" style="color: #f59e0b;">Officer #12 (Gate 1 Shift)</strong></div>
+            <div>Twilio SMS: <strong id="cg-sms-status" style="color: #10b981;">Standby (Safe)</strong></div>
+          </div>
+          <div class="sim-screen" id="cg-canvas-screen" style="position: relative; min-height: 280px;">
+            <canvas id="cg-crowd-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
+            <div id="cg-risk-badge" style="position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 99px; font-family: var(--font-mono); font-size: 0.75rem; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #10b981; backdrop-filter: blur(4px);">
+              STATUS: SAFE (COUNT: 36)
+            </div>
+            <div id="cg-sms-alert-banner" style="display: none; position: absolute; bottom: 12px; left: 12px; right: 12px; padding: 8px 12px; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.72rem; background: rgba(239, 68, 68, 0.25); border: 1px solid #ef4444; color: #fca5a5; backdrop-filter: blur(4px);">
+              🚨 [TWILIO SMS SENT TO OFFICER #12]: CRITICAL crowd threshold breached at Gate 1 (94 entities). 4 officers dispatched.
+            </div>
+          </div>
+        </div>
+      `;
+      initCrowdGuardSim();
     } else if (type === 'brainrot_sim') {
       container.innerHTML = `
         <div class="live-demo-playground">
@@ -526,7 +579,7 @@ export function initCaseStudies() {
     }
   }
 
-  function initCrowdSim() {
+  function initCrowdFlowSim() {
     const canvas = document.getElementById('sim-crowd-canvas');
     const slider = document.getElementById('sim-density-slider');
     const valText = document.getElementById('sim-density-val');
@@ -702,6 +755,159 @@ export function initCaseStudies() {
         ctx.fillStyle = boxColor;
         ctx.font = '8.5px monospace';
         ctx.fillText(`ID:${p.trackId}`, p.x - 11, p.y - 20);
+      });
+
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  function initCrowdGuardSim() {
+    const canvas = document.getElementById('cg-crowd-canvas');
+    const slider = document.getElementById('cg-density-slider');
+    const valText = document.getElementById('cg-density-val');
+    const riskBadge = document.getElementById('cg-risk-badge');
+    const smsBanner = document.getElementById('cg-sms-alert-banner');
+    const smsStatus = document.getElementById('cg-sms-status');
+    const feedVal = document.getElementById('cg-feed-val');
+    const officerVal = document.getElementById('cg-officer-val');
+    const cam1Btn = document.getElementById('cg-cam1-btn');
+    const cam2Btn = document.getElementById('cg-cam2-btn');
+    if (!canvas || !slider) return;
+
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.parentElement.clientWidth;
+    canvas.height = canvas.parentElement.clientHeight || 280;
+
+    let currentCam = 'CAM-01';
+    let points = [];
+
+    function updatePoints(count) {
+      points = [];
+      for (let i = 0; i < count; i++) {
+        points.push({
+          x: Math.random() * (canvas.width - 40) + 20,
+          y: Math.random() * (canvas.height - 40) + 20,
+          vx: (Math.random() - 0.5) * 1.4,
+          vy: (Math.random() - 0.5) * 1.4,
+          conf: (Math.random() * 0.12 + 0.86).toFixed(2)
+        });
+      }
+    }
+
+    let density = parseInt(slider.value, 10);
+    updatePoints(Math.floor(density * 0.85));
+
+    function syncState() {
+      const count = points.length;
+      if (density < 45) {
+        riskBadge.style.background = 'rgba(16, 185, 129, 0.2)';
+        riskBadge.style.borderColor = '#10b981';
+        riskBadge.style.color = '#10b981';
+        riskBadge.textContent = `STATUS: SAFE (${count} DETECTED)`;
+        if (smsStatus) {
+          smsStatus.textContent = 'Standby (Safe)';
+          smsStatus.style.color = '#10b981';
+        }
+        if (smsBanner) smsBanner.style.display = 'none';
+      } else if (density < 75) {
+        riskBadge.style.background = 'rgba(245, 158, 11, 0.2)';
+        riskBadge.style.borderColor = '#f59e0b';
+        riskBadge.style.color = '#f59e0b';
+        riskBadge.textContent = `STATUS: MODERATE WARNING (${count} DETECTED)`;
+        if (smsStatus) {
+          smsStatus.textContent = 'Roster Warning Standby';
+          smsStatus.style.color = '#f59e0b';
+        }
+        if (smsBanner) smsBanner.style.display = 'none';
+      } else {
+        riskBadge.style.background = 'rgba(239, 68, 68, 0.2)';
+        riskBadge.style.borderColor = '#ef4444';
+        riskBadge.style.color = '#ef4444';
+        riskBadge.textContent = `STATUS: CRITICAL SURGE (${count} DETECTED)`;
+        if (smsStatus) {
+          smsStatus.textContent = 'SMS Dispatched via Twilio';
+          smsStatus.style.color = '#ef4444';
+        }
+        if (smsBanner) {
+          const officer = currentCam === 'CAM-01' ? 'OFFICER #12 (GATE 1)' : 'OFFICER #27 (CONCOURSE)';
+          smsBanner.innerHTML = `🚨 [TWILIO SMS SENT TO ${officer}]: Critical crowd density limit exceeded at ${currentCam} (${count} entities). Automated alert dispatched via Twilio REST API.`;
+          smsBanner.style.display = 'block';
+        }
+      }
+    }
+
+    slider.addEventListener('input', (e) => {
+      density = parseInt(e.target.value, 10);
+      valText.textContent = `${density}%`;
+      updatePoints(Math.floor(density * 0.85));
+      syncState();
+    });
+
+    if (cam1Btn && cam2Btn) {
+      cam1Btn.addEventListener('click', () => {
+        currentCam = 'CAM-01';
+        cam1Btn.style.borderColor = '#10b981';
+        cam1Btn.style.color = '#10b981';
+        cam2Btn.style.borderColor = 'var(--border)';
+        cam2Btn.style.color = 'var(--text-secondary)';
+        if (feedVal) feedVal.textContent = 'CAM-01 · Gate 1';
+        if (officerVal) officerVal.textContent = 'Officer #12 (Gate 1 Shift)';
+        updatePoints(Math.floor(density * 0.85));
+        syncState();
+      });
+
+      cam2Btn.addEventListener('click', () => {
+        currentCam = 'CAM-02';
+        cam2Btn.style.borderColor = '#38bdf8';
+        cam2Btn.style.color = '#38bdf8';
+        cam1Btn.style.borderColor = 'var(--border)';
+        cam1Btn.style.color = 'var(--text-secondary)';
+        if (feedVal) feedVal.textContent = 'CAM-02 · North Concourse';
+        if (officerVal) officerVal.textContent = 'Officer #27 (Concourse Shift)';
+        updatePoints(Math.floor(density * 0.7));
+        syncState();
+      });
+    }
+
+    syncState();
+
+    function draw() {
+      ctx.fillStyle = '#0a0a0e';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw 3x3 Zone Density Grid
+      const cellW = canvas.width / 3;
+      const cellH = canvas.height / 3;
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 1;
+
+      for (let r = 0; r < 3; r++) {
+        for (let c = 0; c < 3; c++) {
+          ctx.strokeRect(c * cellW, r * cellH, cellW, cellH);
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+          ctx.font = '8px monospace';
+          ctx.fillText(`ZONE [${r},${c}]`, c * cellW + 6, r * cellH + 12);
+        }
+      }
+
+      // Draw entities
+      const boxColor = density > 75 ? '#ef4444' : (density > 45 ? '#f59e0b' : '#10b981');
+      points.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 10) { p.x = 10; p.vx *= -1; }
+        if (p.x > canvas.width - 10) { p.x = canvas.width - 10; p.vx *= -1; }
+        if (p.y < 10) { p.y = 10; p.vy *= -1; }
+        if (p.y > canvas.height - 10) { p.y = canvas.height - 10; p.vy *= -1; }
+
+        ctx.strokeStyle = boxColor;
+        ctx.lineWidth = 1.4;
+        ctx.strokeRect(p.x - 10, p.y - 16, 20, 32);
+
+        ctx.fillStyle = boxColor;
+        ctx.font = '8px monospace';
+        ctx.fillText(`person ${p.conf}`, p.x - 10, p.y - 19);
       });
 
       requestAnimationFrame(draw);

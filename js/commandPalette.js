@@ -25,6 +25,8 @@ export function initCommandPalette(callbacks = {}) {
     // Projects
     { id: 'proj-crowdflow', title: 'Case Study: CrowdFlow AI', group: 'Projects', icon: 'eye', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('crowdflow') },
     { id: 'proj-crowdflow-repo', title: 'GitHub: CrowdFlow AI Repository', group: 'Social', icon: 'github', action: () => window.open('https://github.com/naveens005/CROWD-FLOW-AI', '_blank') },
+    { id: 'proj-crowdguard', title: 'Case Study: CrowdGuard 3.0', group: 'Projects', icon: 'eye', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('crowdguard') },
+    { id: 'proj-crowdguard-repo', title: 'GitHub: CrowdGuard 3.0 Repository', group: 'Social', icon: 'github', action: () => window.open('https://github.com/naveens005/crowdguard-backend', '_blank') },
     { id: 'proj-brainrot', title: 'Case Study: BrainRot Analytics', group: 'Projects', icon: 'activity', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('brainrot') },
     { id: 'proj-convai', title: 'Case Study: Conversational AI Suite', group: 'Projects', icon: 'message-square', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('conversational_ai') },
     { id: 'proj-fake-id', title: 'Case Study: Fake ID Screening AI', group: 'Projects', icon: 'shield', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('fake_id_screening') },

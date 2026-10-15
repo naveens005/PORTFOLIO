@@ -102,9 +102,26 @@ y += 3.5;
 doc.setFont('helvetica', 'normal');
 doc.setFontSize(8);
 doc.setTextColor(70, 70, 80);
-doc.text('Real-time crowd safety decision system with optical flow kinematics, digital twin & SHA-256 ledger.', margin, y);
+doc.text('Real-time crowd safety platform with optical flow kinematics, forward digital twin & SHA-256 ledger.', margin, y);
 
 // Project 2
+y += 4.5;
+doc.setFont('helvetica', 'bold');
+doc.setFontSize(9);
+doc.setTextColor(30, 30, 30);
+doc.text('CrowdGuard 3.0 — Multi-Camera Crowd Detection & SMS Alert Dispatch', margin, y);
+y += 3.5;
+doc.setFont('helvetica', 'italic');
+doc.setFontSize(8);
+doc.setTextColor(100, 100, 110);
+doc.text('Tech: Python, Flask, YOLOv8, OpenCV, Socket.IO, Twilio SMS, SQLite', margin, y);
+y += 3.5;
+doc.setFont('helvetica', 'normal');
+doc.setFontSize(8);
+doc.setTextColor(70, 70, 80);
+doc.text('Multi-camera surveillance platform with dynamic zone density grids and automated Twilio SMS alert routing.', margin, y);
+
+// Project 3
 y += 4.5;
 doc.setFont('helvetica', 'bold');
 doc.setFontSize(9);
@@ -120,23 +137,6 @@ doc.setFont('helvetica', 'normal');
 doc.setFontSize(8);
 doc.setTextColor(70, 70, 80);
 doc.text('Intelligent attention-decay and cognitive-load modeling with ambient mindfulness interventions.', margin, y);
-
-// Project 3
-y += 4.5;
-doc.setFont('helvetica', 'bold');
-doc.setFontSize(9);
-doc.setTextColor(30, 30, 30);
-doc.text('Conversational AI Suite — Enterprise RAG & Multi-Agent Assistant', margin, y);
-y += 3.5;
-doc.setFont('helvetica', 'italic');
-doc.setFontSize(8);
-doc.setTextColor(100, 100, 110);
-doc.text('Tech: LangChain, ChromaDB, FastAPI, Vector Search', margin, y);
-y += 3.5;
-doc.setFont('helvetica', 'normal');
-doc.setFontSize(8);
-doc.setTextColor(70, 70, 80);
-doc.text('Multi-agent decision trees and semantic retrieval with 92% factual accuracy in domain QA.', margin, y);
 
 // 4. TECHNICAL SKILLS
 addSectionHeader('Technical Skills');
