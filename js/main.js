@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateClock, 1000);
   updateClock();
 
-  // 11. Direct Email Transmission Contact Form
+  // 11. Direct Email Transmission Contact Form (Desktop Gmail Web & Mobile Gmail App Compose Center)
   const contactForm = document.getElementById('portfolio-contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -207,28 +207,96 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-      const body = encodeURIComponent(`Hi Naveen,\n\n${message}\n\n---\nSender Details:\nName: ${name}\nEmail: ${email}`);
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=naveens1077@gmail.com&su=${subject}&body=${body}`;
-      const mailtoUrl = `mailto:naveens1077@gmail.com?subject=${subject}&body=${body}`;
+      const recipient = 'naveens1077@gmail.com';
+      const subjectText = `Portfolio Inquiry from ${name}`;
+      const bodyText = `Hi Naveen,\r\n\r\n${message}\r\n\r\n---\r\nSender Details:\r\nName: ${name}\r\nEmail: ${email}`;
+
+      const subjectEncoded = encodeURIComponent(subjectText);
+      const bodyEncoded = encodeURIComponent(bodyText);
+
+      // Desktop Web Gmail compose URL (opens Desktop Gmail compose window with To, Subject, and Body pre-filled)
+      const desktopGmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subjectEncoded}&body=${bodyEncoded}`;
+
+      // Universal mailto URL (triggers native Mobile Gmail app compose center on Android & iOS with all fields pre-filled)
+      const mailtoUrl = `mailto:${recipient}?subject=${subjectEncoded}&body=${bodyEncoded}`;
+
+      // Android-specific Gmail app Intent (directly launches com.google.android.gm into compose screen)
+      const androidGmailIntent = `intent:#Intent;action=android.intent.action.SENDTO;data=mailto:${recipient}?subject=${subjectEncoded}&body=${bodyEncoded};package=com.google.android.gm;end`;
+
+      // iOS Gmail app URI scheme
+      const iosGmailScheme = `googlegmail:///co?to=${recipient}&subject=${subjectEncoded}&body=${bodyEncoded}`;
+
+      // Device detection
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const isMobile = isAndroid || isIOS || /Mobile|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
       if (feedback) {
         feedback.style.display = 'block';
-        feedback.style.background = 'rgba(16, 185, 129, 0.15)';
-        feedback.style.border = '1px solid #10b981';
-        feedback.style.color = '#10b981';
-        feedback.innerHTML = `✓ Redirecting to Gmail... If it didn't open automatically, <a href="${gmailUrl}" target="_blank" rel="noopener noreferrer" style="color: #10b981; font-weight: 700; text-decoration: underline; margin-left: 4px;">click here to open Gmail ↗</a> or <a href="${mailtoUrl}" style="color: var(--text-secondary); text-decoration: underline; margin-left: 6px;">open mail client</a>.`;
+        feedback.style.background = 'rgba(16, 185, 129, 0.12)';
+        feedback.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+        feedback.style.color = '#e2e8f0';
+        feedback.innerHTML = `
+          <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; color: #10b981; display: flex; align-items: center; gap: 8px;">
+            <span>✓</span> Redirecting to Gmail Compose Center...
+          </div>
+          <p style="margin: 0 0 10px 0; opacity: 0.9; font-size: 0.85rem; line-height: 1.4; color: #cbd5e1;">
+            Your message and details have been loaded. If the compose window didn't open automatically, select your client:
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <a href="${desktopGmailUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 6px; background: #ea4335; color: #ffffff; font-size: 0.82rem; font-weight: 600; text-decoration: none; box-shadow: 0 2px 8px rgba(234,67,53,0.3);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+              Desktop Gmail Web ↗
+            </a>
+            <a href="${mailtoUrl}" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); color: #ffffff; font-size: 0.82rem; font-weight: 600; text-decoration: none;">
+              📱 Mobile Gmail App
+            </a>
+            ${isAndroid ? `
+            <a href="${androidGmailIntent}" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); color: #ffffff; font-size: 0.82rem; font-weight: 600; text-decoration: none;">
+              🤖 Android Gmail Direct
+            </a>` : ''}
+            ${isIOS ? `
+            <a href="${iosGmailScheme}" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); color: #ffffff; font-size: 0.82rem; font-weight: 600; text-decoration: none;">
+              🍎 iOS Gmail App
+            </a>` : ''}
+          </div>
+        `;
       }
 
-      showToast(`✓ Opening Gmail for naveens1077@gmail.com...`);
-      
-      // Redirect to Gmail web compose (open new tab if allowed, else redirect current window)
-      const gmailTab = window.open(gmailUrl, '_blank');
-      if (!gmailTab || gmailTab.closed || typeof gmailTab.closed === 'undefined') {
-        window.location.href = gmailUrl;
+      showToast(`✓ Launching Gmail compose center...`);
+
+      if (isMobile) {
+        // Mobile platform: Trigger native Gmail app compose screen
+        const mobileLink = document.createElement('a');
+        mobileLink.href = mailtoUrl;
+        document.body.appendChild(mobileLink);
+        mobileLink.click();
+        setTimeout(() => {
+          if (document.body.contains(mobileLink)) {
+            document.body.removeChild(mobileLink);
+          }
+        }, 1000);
+      } else {
+        // Desktop platform: Open Desktop Gmail Web Compose in a new tab
+        const gmailTab = window.open(desktopGmailUrl, '_blank');
+        if (!gmailTab || gmailTab.closed || typeof gmailTab.closed === 'undefined') {
+          window.location.href = desktopGmailUrl;
+        }
       }
     });
   }
+
+  // Handle direct Gmail link in social links for mobile responsiveness
+  const gmailDirectLinks = document.querySelectorAll('.gmail-direct-link');
+  gmailDirectLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const isMobileDevice = /Android|iPhone|iPad|iPod|Mobile|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (isMobileDevice) {
+        e.preventDefault();
+        window.location.href = 'mailto:naveens1077@gmail.com';
+      }
+    });
+  });
 
   // 12. In-Browser Resume Modal & Direct 1-Click PDF Download
   // 12. In-Browser Resume Modal & Direct PDF Download
