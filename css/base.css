@@ -56,7 +56,7 @@ body {
   color: var(--bg-primary);
 }
 
-/* Ambient Background Grid & Noise */
+/* Ambient Background Grid & Fluid Aurora */
 .bg-mesh {
   position: fixed;
   top: 0;
@@ -68,9 +68,51 @@ body {
   background-image: 
     linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(circle at 50% 40%, black 30%, transparent 85%);
-  -webkit-mask-image: radial-gradient(circle at 50% 40%, black 30%, transparent 85%);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at 50% 40%, black 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, black 40%, transparent 90%);
+  overflow: hidden;
+}
+
+.bg-mesh::before,
+.bg-mesh::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.65;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.bg-mesh::before {
+  top: -15%;
+  left: -10%;
+  width: 65vw;
+  height: 65vw;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.16) 0%, rgba(59, 130, 246, 0.1) 45%, transparent 70%);
+  animation: auroraFlowOne 18s ease-in-out infinite alternate;
+}
+
+.bg-mesh::after {
+  top: 30%;
+  right: -15%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.14) 0%, rgba(236, 72, 153, 0.08) 50%, transparent 75%);
+  animation: auroraFlowTwo 22s ease-in-out infinite alternate;
+}
+
+@keyframes auroraFlowOne {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(6vw, 8vh) scale(1.1); }
+  100% { transform: translate(-4vw, 12vh) scale(0.95); }
+}
+
+@keyframes auroraFlowTwo {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-8vw, -6vh) scale(1.12); }
+  100% { transform: translate(5vw, -10vh) scale(0.92); }
 }
 
 #hero-canvas {
@@ -168,12 +210,19 @@ code, pre {
 
 .section-number {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--text-muted);
-  display: block;
-  margin-bottom: var(--space-xs);
+  color: var(--sky);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--space-sm);
+  padding: 4px 12px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: var(--radius-full);
 }
 
 .section-subtitle {
