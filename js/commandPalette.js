@@ -34,7 +34,6 @@ export function initCommandPalette(callbacks = {}) {
     { id: 'proj-nova-ai', title: 'Case Study: Nova AI (Android & Gemini Cloud)', group: 'Projects', icon: 'smartphone', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('nova_ai') },
     { id: 'proj-friday', title: 'Case Study: F.R.I.D.A.Y. (Iron Man Personal AI Assistant)', group: 'Projects', icon: 'cpu', action: () => callbacks.openCaseStudy && callbacks.openCaseStudy('friday') },
     { id: 'proj-friday-repo', title: 'GitHub: F.R.I.D.A.Y. Repository', group: 'Social', icon: 'github', action: () => window.open('https://github.com/naveens005/F.R.I.D.A.Y', '_blank') },
-    { id: 'act-download-friday', title: 'Download: F.R.I.D.A.Y. Android APK (11.6 MB)', group: 'Actions', icon: 'download', action: () => { const a = document.createElement('a'); a.href = 'assets/downloads/FRIDAY_Assistant_Release.apk'; a.download = 'FRIDAY_Assistant_Release.apk'; a.click(); } },
 
     // Actions
     { id: 'act-resume', title: 'View & Download Resume', group: 'Actions', icon: 'file-text', action: () => callbacks.openResume && callbacks.openResume() },

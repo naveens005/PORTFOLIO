@@ -162,10 +162,9 @@ export function initCaseStudies() {
       number: 'PROJECT 07',
       title: 'Nova AI — Standalone Android Chatbot',
       subtitle: 'Native Android Gemini Assistant with Direct Cloud Streaming & Zero-Proxy Runtime',
-      tags: ['Android (Kotlin)', 'Jetpack Compose', 'Google Gemini Cloud', 'SSE Streaming', 'Coroutines / Flow', 'Material 3', 'DataStore', 'Android APK'],
+      tags: ['Android (Kotlin)', 'Jetpack Compose', 'Google Gemini Cloud', 'SSE Streaming', 'Coroutines / Flow', 'Material 3', 'DataStore', 'Native Android'],
       image: 'assets/images/nova_ai.jpg',
       repoUrl: 'https://github.com/naveens005/NOVA-AI',
-      downloadUrl: 'assets/downloads/Nova-AI.apk',
       problem: `Most mobile AI chatbot implementations depend on intermediary proxy servers, Python runtime bridges, or desktop companion daemons. This introduces single points of failure, latency overhead, credential leakage risks, and reliance on tethered laptop environments, breaking true on-the-go mobility.`,
       solution: `Nova AI is an engineered standalone mobile intelligence client built natively for Android in Kotlin and Jetpack Compose. It connects directly via encrypted HTTPS to Google Gemini Cloud over Wi-Fi and 5G cellular networks. Featuring real-time Server-Sent Events (SSE) token streaming, automatic dynamic model discovery (Gemini 2.5 / 1.5 Flash), encrypted DataStore credential persistence, and a one-tap connection diagnostic engine, Nova AI delivers enterprise-grade LLM conversational capability straight from your pocket with zero proxy dependencies.`,
       architecture: [
@@ -175,7 +174,7 @@ export function initCaseStudies() {
         'State Machine Multi-Turn Conversation Management with Room DB Persistence',
         'Encrypted SharedPreferences / DataStore for Secure On-Device API Key Storage',
         'Jetpack Compose Material 3 Adaptive UI with Markdown & Code Syntax Highlighting',
-        'Native Compiled Android APK Ready for Sideloading'
+        'Native Compiled Android Client with Direct Cloud Connectivity'
       ],
       metrics: [
         { val: '100%', lbl: 'Standalone (Zero Companion PC/Server)' },
@@ -189,13 +188,9 @@ export function initCaseStudies() {
       number: 'PROJECT 08',
       title: 'F.R.I.D.A.Y. — Advanced Personal AI Assistant',
       subtitle: 'Iron Man Inspired Personal Mobile Assistant for Android with Multi-Model Reasoning, SymPy Math & Permanent Security Guardrails',
-      tags: ['Android (Kotlin)', 'Jetpack Compose', 'Python / FastAPI', 'Google Gemini 2.5', 'OpenAI gpt-4o-mini', 'SymPy Math Engine', 'Accessibility Automation', 'Zero-Override Security', 'Android APK'],
+      tags: ['Android (Kotlin)', 'Jetpack Compose', 'Python / FastAPI', 'Google Gemini 2.5', 'OpenAI gpt-4o-mini', 'SymPy Math Engine', 'Accessibility Automation', 'Zero-Override Security', 'Native Android'],
       image: 'assets/images/friday.jpg',
       repoUrl: 'https://github.com/naveens005/F.R.I.D.A.Y',
-      downloadUrl: 'assets/downloads/FRIDAY_Assistant_Release.apk',
-      downloadName: 'FRIDAY_Assistant_Release.apk',
-      downloadLabel: 'Download Release APK (11.6 MB) ↓',
-      downloadGradient: 'linear-gradient(135deg, #00f3ff, #0284c7)',
       problem: `Voice assistants on mobile operating systems are traditionally trapped in rigid scripted intents, walled proprietary ecosystems, or superficial chatbots unable to solve deterministic symbolic mathematics, browse clean web data, or execute cross-app mobile workflows safely. Crucially, granting unconstrained automation to mobile agents presents catastrophic financial risks around UPI, netbanking, and payment credentials.`,
       solution: `Inspired by Tony Stark's AI in Marvel's Iron Man, F.R.I.D.A.Y. (Female Replacement Intelligent Digital Assistant Youth) is a production-grade personal mobile assistant operating natively on Android smartphones. It unifies a futuristic Jetpack Compose HUD with neural STT/TTS voice conversation, a hybrid FastAPI AI Brain gateway with Google Gemini 2.5 and OpenAI fallback reasoning, a deterministic SymPy calculus engine, autonomous DuckDuckGo web scraping, Android Intent deep-link control, and an Accessibility Automation Service. Above all, it enforces an immutable 3-tier Zero-Override Security Blocklist that permanently blocks all payment, UPI, and banking applications at client Intent, Accessibility, and server layers.`,
       architecture: [
@@ -206,13 +201,13 @@ export function initCaseStudies() {
         'Deterministic SymPy Engine: Symbolic differentiation, definite/indefinite integration, polynomial roots & statistical analysis',
         'Automated Web & App Engine: Organic DuckDuckGo + BS4 article scraper, WhatsApp/Maps/Chrome deep links & Accessibility automation',
         'Encrypted On-Device Room Database: Tamper-proof audit logging of executed intents, commands, and conversations',
-        'Compiled & Signed Release APK: Ready for production sideloading with ProGuard/R8 optimization'
+        'ProGuard/R8 Optimized Production Build Architecture'
       ],
       metrics: [
         { val: '100% Block', lbl: 'UPI & Banking Zero-Override Shield' },
         { val: '18/18 Pass', lbl: 'FastAPI Backend Test Suite' },
         { val: '< 380 ms', lbl: 'Voice-to-Intent Latency' },
-        { val: '11.6 MB', lbl: 'Optimized Release APK Size' }
+        { val: '3-Tier Shield', lbl: 'Zero Financial Override Policy' }
       ],
       demoType: 'friday_sim'
     }
@@ -238,9 +233,9 @@ export function initCaseStudies() {
               View GitHub Repository ↗
             </a>
             ${data.downloadUrl ? `
-            <a href="${data.downloadUrl}" download="${data.downloadName || 'Nova-AI.apk'}" class="btn btn-primary btn-sm" style="display: inline-flex; gap: 6px; align-items: center; background: ${data.downloadGradient || 'linear-gradient(135deg, #6366f1, #8b5cf6)'}; border: none;">
+            <a href="${data.downloadUrl}" download="${data.downloadName || 'App.zip'}" class="btn btn-primary btn-sm" style="display: inline-flex; gap: 6px; align-items: center; background: ${data.downloadGradient || 'linear-gradient(135deg, #6366f1, #8b5cf6)'}; border: none;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              ${data.downloadLabel || 'Download Standalone APK (18 MB) ↓'}
+              ${data.downloadLabel || 'Download ↓'}
             </a>
             ` : ''}
           </div>

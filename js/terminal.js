@@ -214,7 +214,7 @@ Key Feature: "Can I Afford This?" purchase simulator + 100% privacy-compliant ba
 Repo: <span class="terminal-out-cyan">https://github.com/naveens005/NOVA-AI</span>
 Stack: Android (Kotlin), Jetpack Compose, Google Gemini Cloud, SSE Streaming, Coroutines/Flow, Material 3
 Architecture: Clean Architecture (app, core/data, feature/chat, feature/settings, inference/cloud)
-Key Feature: 100% standalone native mobile client communicating directly with Google Gemini Cloud without companion laptop, local proxy, or desktop runtime. Features real-time SSE token streaming, dynamic model discovery, encrypted DataStore credential storage, and compiled standalone APK (18 MB).
+Key Feature: 100% standalone native mobile client communicating directly with Google Gemini Cloud without companion laptop, local proxy, or desktop runtime. Features real-time SSE token streaming, dynamic model discovery, encrypted DataStore credential storage, and clean architecture.
 `);
         break;
 
@@ -226,7 +226,7 @@ Repo: <span class="terminal-out-cyan">https://github.com/naveens005/F.R.I.D.A.Y<
 Stack: Android (Kotlin, Jetpack Compose), Python (FastAPI), Google Gemini 2.5, OpenAI, SymPy 1.14, DuckDuckGo/BS4
 Architecture: Iron Man HUD + Neural Voice (STT/TTS) + Hybrid FastAPI Gateway + Deterministic Math Core + Deep Links
 Security Guardrail: Immutable 3-Tier Zero-Override Shield permanently blocking financial, UPI & banking automation (GPay, PhonePe, Paytm, Banking).
-Key Feature: 18/18 verified backend tests, calculus derivative/integral solver, app control, and signed Android release APK (11.6 MB).
+Key Feature: 18/18 verified backend tests, calculus derivative/integral solver, app control, and multi-model voice reasoning.
 `);
         break;
 
