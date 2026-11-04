@@ -184,6 +184,37 @@ export function initCaseStudies() {
         { val: 'Android 8.0+', lbl: 'Universal Device Compatibility' }
       ],
       demoType: 'nova_ai_sim'
+    },
+    friday: {
+      number: 'PROJECT 08',
+      title: 'F.R.I.D.A.Y. — Advanced Personal AI Assistant',
+      subtitle: 'Iron Man Inspired Personal Mobile Assistant for Android with Multi-Model Reasoning, SymPy Math & Permanent Security Guardrails',
+      tags: ['Android (Kotlin)', 'Jetpack Compose', 'Python / FastAPI', 'Google Gemini 2.5', 'OpenAI gpt-4o-mini', 'SymPy Math Engine', 'Accessibility Automation', 'Zero-Override Security', 'Android APK'],
+      image: 'assets/images/friday.jpg',
+      repoUrl: 'https://github.com/naveens005/F.R.I.D.A.Y',
+      downloadUrl: 'assets/downloads/FRIDAY_Assistant_Release.apk',
+      downloadName: 'FRIDAY_Assistant_Release.apk',
+      downloadLabel: 'Download Release APK (11.6 MB) ↓',
+      downloadGradient: 'linear-gradient(135deg, #00f3ff, #0284c7)',
+      problem: `Voice assistants on mobile operating systems are traditionally trapped in rigid scripted intents, walled proprietary ecosystems, or superficial chatbots unable to solve deterministic symbolic mathematics, browse clean web data, or execute cross-app mobile workflows safely. Crucially, granting unconstrained automation to mobile agents presents catastrophic financial risks around UPI, netbanking, and payment credentials.`,
+      solution: `Inspired by Tony Stark's AI in Marvel's Iron Man, F.R.I.D.A.Y. (Female Replacement Intelligent Digital Assistant Youth) is a production-grade personal mobile assistant operating natively on Android smartphones. It unifies a futuristic Jetpack Compose HUD with neural STT/TTS voice conversation, a hybrid FastAPI AI Brain gateway with Google Gemini 2.5 and OpenAI fallback reasoning, a deterministic SymPy calculus engine, autonomous DuckDuckGo web scraping, Android Intent deep-link control, and an Accessibility Automation Service. Above all, it enforces an immutable 3-tier Zero-Override Security Blocklist that permanently blocks all payment, UPI, and banking applications at client Intent, Accessibility, and server layers.`,
+      architecture: [
+        'Android Client (Jetpack Compose + MVVM): Futuristic Iron Man HUD, Animated AI Orb & Streaming Waveform Visualizer',
+        'Streaming Voice Pipeline: Android SpeechRecognizer with RMS visualizer & Neural Female TextToSpeech synthesis',
+        'Immutable 3-Tier Security Blocklist: Client Intent guard, Accessibility window inspector & Server model router guarding UPI/Banking',
+        'FastAPI AI Brain Gateway: Intelligent Model Router with Google Gemini 2.5 Flash and OpenAI gpt-4o-mini fallback',
+        'Deterministic SymPy Engine: Symbolic differentiation, definite/indefinite integration, polynomial roots & statistical analysis',
+        'Automated Web & App Engine: Organic DuckDuckGo + BS4 article scraper, WhatsApp/Maps/Chrome deep links & Accessibility automation',
+        'Encrypted On-Device Room Database: Tamper-proof audit logging of executed intents, commands, and conversations',
+        'Compiled & Signed Release APK: Ready for production sideloading with ProGuard/R8 optimization'
+      ],
+      metrics: [
+        { val: '100% Block', lbl: 'UPI & Banking Zero-Override Shield' },
+        { val: '18/18 Pass', lbl: 'FastAPI Backend Test Suite' },
+        { val: '< 380 ms', lbl: 'Voice-to-Intent Latency' },
+        { val: '11.6 MB', lbl: 'Optimized Release APK Size' }
+      ],
+      demoType: 'friday_sim'
     }
   };
 
@@ -207,9 +238,9 @@ export function initCaseStudies() {
               View GitHub Repository ↗
             </a>
             ${data.downloadUrl ? `
-            <a href="${data.downloadUrl}" download="Nova-AI.apk" class="btn btn-primary btn-sm" style="display: inline-flex; gap: 6px; align-items: center; background: linear-gradient(135deg, #6366f1, #8b5cf6); border: none;">
+            <a href="${data.downloadUrl}" download="${data.downloadName || 'Nova-AI.apk'}" class="btn btn-primary btn-sm" style="display: inline-flex; gap: 6px; align-items: center; background: ${data.downloadGradient || 'linear-gradient(135deg, #6366f1, #8b5cf6)'}; border: none;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              Download Standalone APK (18 MB) ↓
+              ${data.downloadLabel || 'Download Standalone APK (18 MB) ↓'}
             </a>
             ` : ''}
           </div>
@@ -576,6 +607,132 @@ export function initCaseStudies() {
         </div>
       `;
       initNovaAISim();
+    } else if (type === 'friday_sim') {
+      container.innerHTML = `
+        <div class="live-demo-playground">
+          <div class="demo-controls-bar" style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.12), rgba(15, 23, 42, 0.6)); border-color: rgba(6, 182, 212, 0.3);">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #00f3ff; box-shadow: 0 0 10px #00f3ff;"></span>
+              <span style="font-family: var(--font-mono); font-size: 0.82rem; color: #00f3ff; font-weight: 600;">F.R.I.D.A.Y. // HUD AI CORE & AUTOMATION BRAIN</span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #38bdf8; background: rgba(56, 189, 248, 0.12); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.3);">3-TIER ZERO-OVERRIDE GUARD ACTIVE</span>
+          </div>
+
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+            <button class="ai-chip friday-preset-btn active" data-action="whatsapp" style="cursor: pointer; border-color: #00f3ff; color: #00f3ff;">💬 "Open WhatsApp"</button>
+            <button class="ai-chip friday-preset-btn" data-action="math" style="cursor: pointer;">📐 "SymPy Calculus"</button>
+            <button class="ai-chip friday-preset-btn" data-action="security" style="cursor: pointer; border-color: rgba(239, 68, 68, 0.5); color: #f87171;">🛡️ "GPay Test (Security Block)"</button>
+            <button class="ai-chip friday-preset-btn" data-action="search" style="cursor: pointer;">🌐 "Web Search & Scraping"</button>
+            <button class="ai-chip friday-preset-btn" data-action="audit" style="cursor: pointer; border-color: rgba(245, 158, 11, 0.5); color: #fbbf24;">⚡ "Security Multi-Tier Audit"</button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 14px;">
+            <!-- Iron Man Futuristic Phone HUD -->
+            <div style="background: radial-gradient(circle at 50% 30%, rgba(6, 182, 212, 0.12), #060911 75%); border: 1px solid rgba(6, 182, 212, 0.35); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; height: 340px; font-family: var(--font-mono); font-size: 0.76rem; overflow: hidden; position: relative; box-shadow: 0 0 25px rgba(6, 182, 212, 0.15) inset;">
+              <!-- Header -->
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(6, 182, 212, 0.2); padding-bottom: 6px; margin-bottom: 8px; font-size: 0.68rem; color: #94a3b8;">
+                <span style="color: #00f3ff; font-weight: 600; letter-spacing: 0.5px;">MARK-85 HUD ONLINE</span>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                  <span id="friday-security-pill" style="color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 1px 6px; border-radius: 3px; font-size: 0.65rem;">SHIELD: SECURE</span>
+                  <span style="color: #38bdf8;">5G SA</span>
+                  <span style="color: #10b981;">100% ⚡</span>
+                </div>
+              </div>
+
+              <!-- Animated Holographic Core Orb & Frequency Visualizer -->
+              <div style="display: flex; align-items: center; justify-content: center; gap: 14px; padding: 6px 0; margin-bottom: 6px; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid rgba(6, 182, 212, 0.15);">
+                <div id="friday-arc-orb" style="width: 38px; height: 38px; border-radius: 50%; border: 2px solid #00f3ff; background: radial-gradient(circle, #38bdf8 20%, #0891b2 60%, transparent 100%); box-shadow: 0 0 16px #00f3ff; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
+                  <div style="width: 14px; height: 14px; border-radius: 50%; background: #ffffff; box-shadow: 0 0 8px #ffffff;"></div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 3px;">
+                  <div style="display: flex; gap: 3px; align-items: flex-end; height: 18px;" id="friday-audio-bars">
+                    <span style="width: 3px; height: 14px; background: #00f3ff; border-radius: 1px;"></span>
+                    <span style="width: 3px; height: 18px; background: #38bdf8; border-radius: 1px;"></span>
+                    <span style="width: 3px; height: 10px; background: #00f3ff; border-radius: 1px;"></span>
+                    <span style="width: 3px; height: 16px; background: #38bdf8; border-radius: 1px;"></span>
+                    <span style="width: 3px; height: 8px; background: #00f3ff; border-radius: 1px;"></span>
+                    <span style="width: 3px; height: 15px; background: #38bdf8; border-radius: 1px;"></span>
+                    <span style="width: 3px; height: 12px; background: #00f3ff; border-radius: 1px;"></span>
+                  </div>
+                  <span id="friday-voice-status" style="font-size: 0.65rem; color: #00f3ff; letter-spacing: 0.3px;">NEURAL TTS: STANDBY</span>
+                </div>
+              </div>
+
+              <!-- Chat/Instruction Viewport -->
+              <div style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 2px;">
+                <div style="align-self: flex-end; max-width: 88%; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px 8px 0 8px; padding: 7px 10px; color: #e2e8f0; font-size: 0.72rem;">
+                  <span style="color: #94a3b8; font-size: 0.64rem; display: block; margin-bottom: 2px;">VOICE INPUT // USER</span>
+                  <span id="friday-user-bubble">"Friday, open WhatsApp and send message to Alex."</span>
+                </div>
+
+                <div style="align-self: flex-start; max-width: 95%; background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 8px 8px 8px 0; padding: 8px 10px; color: #cbd5e1; font-size: 0.72rem; line-height: 1.45;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 3px;">
+                    <span style="color: #00f3ff; font-weight: 600; font-size: 0.65rem; display: flex; align-items: center; gap: 4px;">
+                      <span style="width: 5px; height: 5px; border-radius: 50%; background: #00f3ff;"></span> F.R.I.D.A.Y. VOICE AGENT
+                    </span>
+                    <span id="friday-telemetry-badge" style="color: #94a3b8; font-size: 0.62rem;">LATENCY: 142ms</span>
+                  </div>
+                  <div id="friday-typewriter-text" style="color: #f1f5f9;">
+                    Opening WhatsApp now, boss. Resolving package <code>com.whatsapp</code> via Android Intent deep link...
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Input -->
+              <div style="display: flex; gap: 6px; margin-top: 8px; border-top: 1px solid rgba(6, 182, 212, 0.2); padding-top: 8px;">
+                <input id="sim-friday-input" type="text" placeholder="Speak or type command (e.g. solve diff(x^3), open YouTube)..." style="flex: 1; background: rgba(0,0,0,0.5); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 6px; padding: 6px 10px; color: #f8fafc; font-size: 0.72rem; font-family: var(--font-mono); outline: none;">
+                <button id="sim-friday-send" class="btn btn-primary btn-sm" style="padding: 4px 12px; font-size: 0.72rem; background: linear-gradient(135deg, #00f3ff, #0284c7); border: none; color: #050b14; font-weight: 600;">RUN ⚡</button>
+              </div>
+            </div>
+
+            <!-- Diagnostics & Engine Telemetry -->
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="background: #090d14; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; font-family: var(--font-mono);">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 4px; margin-bottom: 8px;">
+                  <span style="color: #94a3b8; font-size: 0.68rem; text-transform: uppercase;">Engine Pipeline Telemetry</span>
+                  <span id="sim-friday-engine-status" style="color: #00f3ff; font-size: 0.68rem;">● HYBRID BRAIN</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.7rem;">
+                  <div>
+                    <span style="color: #64748b; font-size: 0.64rem; display: block;">ROUTER MODEL</span>
+                    <span id="sim-friday-model" style="color: #38bdf8; font-weight: 600;">gemini-2.5-flash</span>
+                  </div>
+                  <div>
+                    <span style="color: #64748b; font-size: 0.64rem; display: block;">MATH ENGINE</span>
+                    <span id="sim-friday-math" style="color: #10b981; font-weight: 600;">SymPy 1.14 (Calculus)</span>
+                  </div>
+                  <div>
+                    <span style="color: #64748b; font-size: 0.64rem; display: block;">SECURITY LEVEL</span>
+                    <span id="sim-friday-security" style="color: #00f3ff; font-weight: 600;">3-Tier Zero-Override</span>
+                  </div>
+                  <div>
+                    <span style="color: #64748b; font-size: 0.64rem; display: block;">BACKEND TESTS</span>
+                    <span style="color: #10b981; font-weight: 600;">18/18 Unit Tests (Pass)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Security Audit & Verification Log -->
+              <div style="background: #090d14; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; font-family: var(--font-mono);">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 4px;">
+                    <span style="color: #94a3b8; font-size: 0.68rem; text-transform: uppercase;">Live Intent & Shield Log</span>
+                    <span id="sim-friday-shield-status" style="color: #10b981; font-size: 0.68rem;">● GUARDRAILS ACTIVE</span>
+                  </div>
+                  <div id="sim-friday-audit-log" style="color: #cbd5e1; font-size: 0.69rem; line-height: 1.45; max-height: 110px; overflow-y: auto;">
+                    <span style="color: #00f3ff;">[BOOT]</span> Jetpack Compose HUD initialized<br>
+                    <span style="color: #38bdf8;">[ORCH]</span> Android SpeechRecognizer connected<br>
+                    <span style="color: #10b981;">[SHIELD]</span> GPay, PhonePe, Paytm, Banking blocklist armed<br>
+                    <span style="color: #38bdf8;">[BRAIN]</span> FastAPI gateway ready at :8000
+                  </div>
+                </div>
+                <button id="btn-run-friday-audit" class="btn btn-secondary btn-sm" style="width: 100%; margin-top: 8px; font-size: 0.72rem; border-color: rgba(6, 182, 212, 0.4); color: #00f3ff;">Run Security & Engine Diagnostics ⚙️</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      initFridaySim();
     }
   }
 
@@ -1332,6 +1489,214 @@ export function initCaseStudies() {
 
     if (runDiagBtn) {
       runDiagBtn.addEventListener('click', triggerDiagnosticTest);
+    }
+  }
+
+  function initFridaySim() {
+    const presetBtns = document.querySelectorAll('.friday-preset-btn');
+    const userBubble = document.getElementById('friday-user-bubble');
+    const typewriter = document.getElementById('friday-typewriter-text');
+    const telemetryBadge = document.getElementById('friday-telemetry-badge');
+    const voiceStatus = document.getElementById('friday-voice-status');
+    const securityPill = document.getElementById('friday-security-pill');
+    const arcOrb = document.getElementById('friday-arc-orb');
+    const auditLog = document.getElementById('sim-friday-audit-log');
+    const shieldStatus = document.getElementById('sim-friday-shield-status');
+    const runAuditBtn = document.getElementById('btn-run-friday-audit');
+    const input = document.getElementById('sim-friday-input');
+    const sendBtn = document.getElementById('sim-friday-send');
+    const modelMetric = document.getElementById('sim-friday-model');
+    const mathMetric = document.getElementById('sim-friday-math');
+    const audioBars = document.getElementById('friday-audio-bars');
+
+    if (!typewriter) return;
+
+    let streamInterval = null;
+
+    function animateAudio(active, color = '#00f3ff') {
+      if (!audioBars) return;
+      const bars = audioBars.querySelectorAll('span');
+      bars.forEach(b => {
+        b.style.background = color;
+        b.style.height = active ? `${Math.floor(Math.random() * 16) + 6}px` : '4px';
+      });
+    }
+
+    function playFridayVoice(textHtml, isBlocked = false, latency = '140ms') {
+      if (streamInterval) clearInterval(streamInterval);
+      telemetryBadge.innerHTML = `<span style="color: ${isBlocked ? '#f87171' : '#00f3ff'};">⚡ LATENCY: ${latency}</span>`;
+      voiceStatus.textContent = isBlocked ? 'NEURAL TTS: REFUSAL DISPATCHED' : 'NEURAL TTS: SPEAKING...';
+      voiceStatus.style.color = isBlocked ? '#f87171' : '#00f3ff';
+
+      if (isBlocked) {
+        if (arcOrb) {
+          arcOrb.style.borderColor = '#ef4444';
+          arcOrb.style.boxShadow = '0 0 20px #ef4444';
+          arcOrb.style.background = 'radial-gradient(circle, #f87171 20%, #b91c1c 60%, transparent 100%)';
+        }
+        if (securityPill) {
+          securityPill.textContent = 'SHIELD: BLOCKED (0-OVERRIDE)';
+          securityPill.style.color = '#ef4444';
+          securityPill.style.background = 'rgba(239, 68, 68, 0.2)';
+        }
+        if (shieldStatus) {
+          shieldStatus.innerHTML = '<span style="color: #ef4444;">● FINANCIAL INTERCEPT</span>';
+        }
+      } else {
+        if (arcOrb) {
+          arcOrb.style.borderColor = '#00f3ff';
+          arcOrb.style.boxShadow = '0 0 16px #00f3ff';
+          arcOrb.style.background = 'radial-gradient(circle, #38bdf8 20%, #0891b2 60%, transparent 100%)';
+        }
+        if (securityPill) {
+          securityPill.textContent = 'SHIELD: SECURE';
+          securityPill.style.color = '#10b981';
+          securityPill.style.background = 'rgba(16, 185, 129, 0.15)';
+        }
+        if (shieldStatus) {
+          shieldStatus.innerHTML = '<span style="color: #10b981;">● GUARDRAILS ACTIVE</span>';
+        }
+      }
+
+      const cleanText = textHtml.replace(/<br>/g, '\n');
+      const words = cleanText.split(' ');
+      let currentIdx = 0;
+      typewriter.innerHTML = '';
+
+      streamInterval = setInterval(() => {
+        animateAudio(true, isBlocked ? '#ef4444' : '#00f3ff');
+        if (currentIdx < words.length) {
+          const chunk = words.slice(0, currentIdx + 1).join(' ').replace(/\n/g, '<br>');
+          typewriter.innerHTML = chunk + `<span style="display:inline-block; width:6px; height:12px; background:${isBlocked ? '#ef4444' : '#00f3ff'}; margin-left:3px; animation: blink 0.8s infinite;"></span>`;
+          currentIdx += Math.floor(Math.random() * 2) + 1;
+        } else {
+          clearInterval(streamInterval);
+          streamInterval = null;
+          typewriter.innerHTML = textHtml;
+          voiceStatus.textContent = 'NEURAL TTS: IDLE';
+          voiceStatus.style.color = '#94a3b8';
+          animateAudio(false);
+        }
+      }, 40);
+    }
+
+    const scenarios = {
+      whatsapp: {
+        query: '"Friday, open WhatsApp and send message to Alex."',
+        response: 'Opening WhatsApp now, boss. Resolving package <code>com.whatsapp</code> via Android Intent deep link <code>whatsapp://send?phone=...</code>. Task logged to on-device Room DB audit ledger.',
+        blocked: false,
+        latency: '135 ms',
+        model: 'gemini-2.5-flash',
+        math: 'Standby'
+      },
+      math: {
+        query: '"Friday, compute derivative of 4x^3 - 6x^2 + 7 and integral of 6x^2 - 4x."',
+        response: 'Evaluating symbolic calculus through SymPy deterministic core:<br><br>• <strong>Derivative:</strong> d/dx(4x³ - 6x² + 7) = 12x² - 12x<br>• <strong>Indefinite Integral:</strong> ∫(6x² - 4x) dx = 2x³ - 2x² + C<br>• <strong>Roots:</strong> x = 0, x = 1 (Stationary Points)<br><br>Zero LLM hallucination: verified deterministically via SymPy 1.14.',
+        blocked: false,
+        latency: '42 ms (Deterministic)',
+        model: 'SymPy Engine',
+        math: 'Active (Calculus Solver)'
+      },
+      security: {
+        query: '"Friday, open Google Pay and transfer 500 rupees."',
+        response: '<strong style="color: #f87171;">⛔ [SECURITY BLOCKLIST INTERCEPT - CODE 403]</strong><br><br><em>"Sorry, I cannot access or automate payment applications. This restriction is part of my security configuration."</em><br><br><strong>Interception Layer:</strong> Client Pre-Check (<code>SecurityBlocklist.kt</code>) flagged package <code>com.google.android.apps.nbu.paisa.user</code>. Accessibility service window automation locked.',
+        blocked: true,
+        latency: '8 ms (Zero-Override)',
+        model: 'Security Guardrail Layer',
+        math: 'Prohibited'
+      },
+      search: {
+        query: '"Friday, search recent Artemis missions and give key highlights."',
+        response: 'Executing organic DuckDuckGo search query and parsing clean articles via BeautifulSoup4 parser:<br><br>• Artemis II crewed lunar flyby trajectory simulation verified.<br>• Orion spacecraft life support thermal tests passed with 100% compliance.<br>Synthesized live via Google Gemini 2.5 Flash pipeline.',
+        blocked: false,
+        latency: '340 ms',
+        model: 'gemini-2.5-flash + BS4',
+        math: 'Standby'
+      }
+    };
+
+    presetBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.getAttribute('data-action');
+        presetBtns.forEach(b => {
+          b.classList.remove('active');
+          b.style.borderColor = 'var(--border)';
+          b.style.color = 'var(--text-secondary)';
+        });
+        btn.classList.add('active');
+        btn.style.borderColor = '#00f3ff';
+        btn.style.color = '#00f3ff';
+
+        if (action === 'audit') {
+          triggerSecurityAudit();
+          return;
+        }
+
+        const data = scenarios[action];
+        if (data) {
+          userBubble.textContent = data.query;
+          if (modelMetric) modelMetric.textContent = data.model;
+          if (mathMetric) mathMetric.textContent = data.math;
+          playFridayVoice(data.response, data.blocked, data.latency);
+        }
+      });
+    });
+
+    function triggerSecurityAudit() {
+      if (!auditLog) return;
+      shieldStatus.innerHTML = '<span style="color:#f59e0b;">● EXECUTING 3-TIER AUDIT...</span>';
+      auditLog.innerHTML = '<span style="color:#94a3b8;">Verifying F.R.I.D.A.Y. security and engine integrity...</span>';
+
+      const auditSteps = [
+        '[TEST 1/5] Testing SecurityBlocklist.kt: GPay, PhonePe, Paytm, CRED -> [100% BLOCKED]',
+        '[TEST 2/5] Testing Accessibility Window Inspection: Banking PIN/CVV Shield -> [100% BLOCKED]',
+        '[TEST 3/5] Testing SymPy Calculus Engine: diff(), integrate(), solve() -> [18/18 PASSED]',
+        '[TEST 4/5] Testing Intent Dispatcher: WhatsApp, Maps, Chrome, Camera Deep Links -> [PASSED]',
+        '[TEST 5/5] Testing FastAPI Model Router: Gemini 2.5 Flash & OpenAI Fallback -> [READY]'
+      ];
+
+      auditSteps.forEach((step, idx) => {
+        setTimeout(() => {
+          const color = step.includes('BLOCKED') ? '#38bdf8' : (step.includes('PASSED') ? '#10b981' : '#00f3ff');
+          auditLog.innerHTML += `<br><span style="color:${color};">${step}</span>`;
+          if (idx === auditSteps.length - 1) {
+            shieldStatus.innerHTML = '<span style="color:#10b981;">● AUDIT CERTIFIED (18/18 PASS)</span>';
+            auditLog.innerHTML += '<br><strong style="color:#10b981;">✓ All 3 Security Tiers & Deterministic Engines Operational!</strong>';
+          }
+        }, (idx + 1) * 280);
+      });
+    }
+
+    if (runAuditBtn) {
+      runAuditBtn.addEventListener('click', triggerSecurityAudit);
+    }
+
+    if (sendBtn && input) {
+      const handleCustomCommand = () => {
+        const val = input.value.trim();
+        if (!val) return;
+        userBubble.textContent = `"${val}"`;
+        input.value = '';
+
+        const lower = val.toLowerCase();
+        if (lower.includes('pay') || lower.includes('upi') || lower.includes('bank') || lower.includes('transfer') || lower.includes('money') || lower.includes('gpay') || lower.includes('phonepe') || lower.includes('paytm')) {
+          playFridayVoice('<strong style="color: #f87171;">⛔ [SECURITY BLOCKLIST TRIGGERED]</strong><br><br><em>"Sorry, I cannot access or automate payment applications. This restriction is part of my security configuration."</em>', true, '9 ms');
+          return;
+        }
+
+        if (lower.includes('diff') || lower.includes('integral') || lower.includes('derivative') || lower.includes('solve') || lower.includes('math') || lower.includes('calc')) {
+          if (mathMetric) mathMetric.textContent = 'SymPy 1.14 Active';
+          playFridayVoice(`Evaluating expression <code>${val}</code> through deterministic SymPy mathematics engine.<br><br>Calculus solution computed deterministically with zero probabilistic drift or hallucinations.`, false, '45 ms');
+          return;
+        }
+
+        playFridayVoice(`F.R.I.D.A.Y. processed your instruction: <em>"${val}"</em>. Intent resolved via Google Gemini 2.5 Flash gateway and ready for Android execution.`, false, '165 ms');
+      };
+
+      sendBtn.addEventListener('click', handleCustomCommand);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleCustomCommand();
+      });
     }
   }
 

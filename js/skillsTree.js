@@ -33,8 +33,8 @@ export function initSkillsTree() {
       name: 'Generative AI & LLMs',
       sub: 'Cloud Streaming & Multi-Agent Workflows',
       desc: 'Prompt engineering, direct SSE token streaming, contextual vector retrieval, and agentic workflows.',
-      tags: ['Google Gemini Cloud', 'SSE Streaming', 'LangChain', 'ChromaDB', 'Vector Search', 'Prompt Crafting', 'Anthropic Claude'],
-      project: 'Nova AI, Conversational AI Suite & NaveenAI'
+      tags: ['Google Gemini Cloud', 'Python / FastAPI', 'OpenAI', 'SymPy Math Engine', 'SSE Streaming', 'LangChain', 'ChromaDB'],
+      project: 'F.R.I.D.A.Y., Nova AI & Conversational AI Suite'
     },
     {
       id: 'data',
@@ -60,8 +60,8 @@ export function initSkillsTree() {
       name: 'Mobile, Web & Systems',
       sub: 'Native Android & Full Stack Architecture',
       desc: 'Native Android mobile clients, modular TypeScript/ES6+, mobile frameworks, REST/SSE APIs, and Git versioning.',
-      tags: ['Android (Kotlin)', 'Jetpack Compose', 'TypeScript', 'React Native', 'Python / Flask', 'JavaScript (ES6+)', 'Git / GitHub'],
-      project: 'Nova AI, SpendCompass & Portfolio Web Apps'
+      tags: ['Android (Kotlin)', 'Jetpack Compose', 'Python / FastAPI', 'TypeScript', 'React Native', 'Accessibility Service', 'Git / GitHub'],
+      project: 'F.R.I.D.A.Y., Nova AI & SpendCompass'
     }
   ];
 
